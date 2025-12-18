@@ -1,11 +1,85 @@
 /* TYPOGRAPHY */
 /* ___________________________________ */
 
+/* Assistant */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+/* Delaney */
+@import url("https://use.typekit.net/ycj8qox.css");
+
 
 
 /* VARIABLES */
 /* ___________________________________ */
 
+:root {
+
+    /* NAVNE ER TBD, JEG ER BARE KOMMET MED FORSLAG OG HAR KLARGJORT DET 
+    ====================================================================*/
+
+    /* Farver
+    ==========*/
+    --hvid: #FAF9F7;
+    --sort: #2B2B2B;
+    --groen: #849B7C;
+    --brun: #C3A498;
+
+
+    /* Spacere 
+    ===========*/
+    --desktopSectionSpacer: 6.25rem;
+    --mobileSectionSpacer: 3rem;
+    
+    --tekstBilledeSpacer: 9.6875rem;
+
+    --galleriSpacer: 0.625rem;
+
+    --desktopBroedtekstBilledeOverskriftSpacer: 1.875rem;
+    --mobileBroedtekstBilledeOverskriftSpacer: 0.9375rem;
+
+    /* Border radius 
+    ================*/
+    --borderRadius: 6px;
+
+
+    /* 
+       Skriftstørrelser – Desktop
+    ============================== */
+    --desktopNav: 1.5rem;
+
+    --desktopBroedtekst: 1.375rem;
+
+    --desktopH1: 3.25rem;
+    --desktopH2: 2.5rem;
+    --desktopH3: 1.75rem;
+
+    --desktopFooterOverskrift: 1.25rem;
+    --desktopFooterTekst: 1.25rem;
+
+    --desktopCardTitel: 1.5rem;
+    --desktopCardBroedtekst: 1.375rem;
+    --desktopCardCTA: 1.25rem;
+
+
+    /*
+       Skriftstørrelser – Mobile
+    ========================== */
+    --mobileNav: 1rem;
+
+    --mobileBroedtekst: 1rem;
+
+    --mobileH1: 2.125rem;
+    --mobileH2: 1.5rem;
+    --mobileH3: 1.25rem;
+
+    --mobileFooterOverskrift: 0.875rem;
+    --mobileFooterTekst: 0.875rem;
+
+    --mobileCardTitel: 1rem;
+    --mobileCardBroedtekst: 0.875rem;
+    --mobileCardCTA: 0.75rem;
+
+}
 
 
 /* GENERAL STYLING */
@@ -16,3 +90,40 @@
     margin: 0;
     padding: 0;
 }
+
+
+.catchphrase{
+font-family: "freight-big-pro", serif;
+font-weight: 700;
+text-transform: uppercase;
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: "delaney", sans-serif;
+}
+
+
+p,
+a,
+li,
+button,
+input,
+label,
+textarea,
+span {
+    font-family: "Assistant", sans-serif;
+    line-height: 150%;
+
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* Media queries */
+/* ___________________________________ */
+
