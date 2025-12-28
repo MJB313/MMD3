@@ -64,7 +64,6 @@
   --desktopFooterOverskrift: 1.25rem;
   --desktopFooterTekst: 1.25rem;
 
-  --desktopCardTitel: 1.5rem;
   --desktopCardBroedtekst: 1.375rem;
   --desktopCardCTA: 1.25rem;
 
@@ -86,9 +85,14 @@
   --mobileFooterOverskrift: 0.875rem;
   --mobileFooterTekst: 0.875rem;
 
-  --mobileCardTitel: 1rem;
-  --mobileCardBroedtekst: 0.875rem;
-  --mobileCardCTA: 0.75rem;
+  --mobileCardBroedtekst: 1rem;
+  --mobileCardCTA: 1rem;
+
+
+/* Fonte */
+
+--assistant:   font-family: "delaney", sans-serif;
+
 }
 
 /* GENERAL STYLING */
@@ -408,6 +412,203 @@ header {
   text-transform: none;
 }
 
+
+
+/* Gallery Sektionen */
+
+
+.gallery {
+  display: grid;
+  gap: var(--galleriSpacer);
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  width: 100%;
+  margin-bottom: var(--desktopSectionSpacer);
+}
+
+.gallery img {
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+/* Anmeldelser - DELVIST LAVET MED AI*/
+
+.reviews {
+  background-image: url('../images/Testimonials-baggrund.jpg'); /* your background */
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 1rem;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  margin-bottom: var(--desktopSectionSpacer);
+  font-family: "Assistant", sans-serif;
+}
+
+.anmeldelserOverskrift {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--desktopBroedtekstBilledeOverskriftSpacer);
+}
+
+.reviews h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.review-slider {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: var(--desktopBroedtekstBilledeOverskriftSpacer);
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;       /* full width */
+  position: absolute; /* stack on top of each other */
+  top: 20%;
+  left: 0;
+  padding-inline: 3rem;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%); /* start off-screen */
+}
+
+
+.review.active {
+  transform: translateX(0);
+  position: relative;
+  z-index: 2;
+}
+
+.review.next {
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.review.prev {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.reviewer-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  margin-bottom: 0.5rem;
+}
+
+.reviewer-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.review-date {
+  font-size: 1.25rem;
+  color: var(--hvid);
+  margin: 0;
+  font-weight: 300;
+}
+
+.review-text {
+  font-size: 1.375rem;
+  margin: 1rem 0;
+}
+
+.review-stars {
+  font-size: 1.25rem;
+  color: var(--brun);
+}
+
+/* Arrows */
+.review-slider button.prev,
+.review-slider button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.review-slider button.prev { 
+    left: 10px; 
+}
+
+.review-slider button.next { 
+    right: 10px; 
+}
+
+.review-slider button:focus {
+  outline: none;
+}
+
+
+
+/* Footer */
+
+.site-footer {
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  padding: 30px 20px;
+  font-family: sans-serif;
+}
+
+.footer-inner {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 3rem;
+  gap: 1rem;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.footer-item a, .footer-item p {
+  color: #000;
+  text-decoration: none;
+  font-family: var(--assistant);
+  font-size: var(--desktopFooterTekst);
+}
+
+.footer-item a{
+    text-decoration: underline;
+}
+
+
+
+.footer-logo img {
+  max-height: 140px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+footer i {
+    font-size: 1.2rem;
+}
+
 /* ================================
 Media querries
 ================================== */
@@ -541,7 +742,7 @@ Media querries
 
 .cardWrapper article p {
     font-size: var(--mobileCardBroedtekst);
-  padding: 0 0 var(--mobileBroedtekstBilledeOverskriftSpacer) var(--mobileBroedtekstBilledeOverskriftSpacer);
+  padding: 0 var(--mobileBroedtekstBilledeOverskriftSpacer) var(--mobileBroedtekstBilledeOverskriftSpacer) var(--mobileBroedtekstBilledeOverskriftSpacer);
 }
 
 .cardWrapper article button {
@@ -558,7 +759,46 @@ h2 {
 
 .sdrac {
     padding-block: var(--mobileBroedtekstBilledeOverskriftSpacer);
+    margin-bottom: var(--mobileSectionSpacer);
 }
+
+h1 {
+    margin-bottom: var(--mobileBroedtekstBilledeOverskriftSpacer);
+}
+
+.z-layout{
+    gap: var(--gutterGapMobile);
+    margin-bottom: var(--mobileSectionSpacer);
+}
+
+/* Anmeldelser */
+
+  .review-text {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .reviews h2 {
+    font-size: 2rem;
+  }
+
+
+
+  /* footer */
+  .footer-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-auto-rows: auto;
+    gap: 20px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-logo {
+    grid-column: 1 / -1; /* logo spans full width */
+    order: -1;
+  }
+ 
 
 }
 
@@ -575,5 +815,16 @@ h2 {
     width: calc(100% - var(--gutterGapMobile) * 2);
     margin: 0 auto;
     transform: translateY(150px);
+  }
+
+.gallery {
+  display: grid;
+  gap: var(--galleriSpacer);
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+  .footer-inner {
+    grid-template-columns: 1fr; /* single column */
   }
 }
