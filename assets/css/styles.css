@@ -295,7 +295,7 @@ span {
 }
 
 .containerHeroImage a,
-.cardWrapper article button {
+.cardWrapper article .cardButton {
   display: grid;
   place-items: center;
   color: white;
@@ -406,11 +406,12 @@ span {
   color: var(--sort);
 }
 
-.cardWrapper article button {
+.cardWrapper article .cardButton {
   margin: auto;
   border: none;
   cursor: pointer;
   text-transform: none;
+    padding-top: 0.5rem;
 }
 
 
