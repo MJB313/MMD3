@@ -1220,3 +1220,85 @@ h1 {
 .liSpacer{
   margin-bottom: 1.5rem;
 }
+
+.prisSection{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.prisSection ul{
+  padding-left: 1.2rem;
+}
+
+.prisWrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gutterGap);
+
+}
+
+.prisWrapper article {
+  height: 900px;
+  padding: 40px 30px;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(
+      120deg,
+      #AE492B 0%,
+      #bb5632 25%,
+      #d07144 50%,
+      #bb5632 75%,
+      #AE492B 100%
+    );
+}
+
+.prisWrapper article:nth-child(2) {
+
+background: 
+  linear-gradient(
+    120deg,
+    #666666 0%,
+    #8f8f8f 25%,
+    #bdbdbd 50%,
+    #8f8f8f 75%,
+    #666666 100%
+  );
+}
+
+.prisWrapper article:nth-child(3) {
+
+background: 
+  linear-gradient(
+    120deg,
+    #f7be62 0%,
+    #D9B87F 25%,
+    #E5D3C0 50%,
+    #D9B87F 75%,
+    #AE7C2B 100%
+  );
+}
+
+.prisWrapper article h3 {
+  font-size: var(--desktopH3);
+  margin-bottom: var(--desktopBroedtekstBilledeOverskriftSpacer);
+}
+
+.prisWrapper ul li {
+  font-size: var(--desktopBroedtekst);
+  margin-bottom: 10px;
+}
+
+.slutningAfPris {
+  margin-top: auto;
+  text-align: center;
+}
+
+.slutningAfPris hr {
+  margin: 20px 0;
+  height: 2px;
+  background: var(--hvid);
+  border: none;
+}
