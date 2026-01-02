@@ -295,7 +295,8 @@ span {
 }
 
 .containerHeroImage a,
-.cardWrapper article .cardButton {
+.cardWrapper article .cardButton,
+.moedeSektion a {
   display: grid;
   place-items: center;
   color: white;
@@ -871,4 +872,258 @@ h1 {
   padding-bottom: 0;
   gap: 1.5rem;
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.moedeSektion{
+    margin-bottom: var(--desktopSectionSpacer);
+position: relative;
+
+}
+
+.moedeSektion p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.moedeSektion a {
+margin: 0 auto;
+}
+
+.moedeSektion a:hover ~ img {
+  opacity: 1;
+
+}
+
+.moedeSektion img {
+  position: absolute;
+  bottom: -120px;
+  left: 32%;
+  width: 360px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.2s ease-in;
 }
