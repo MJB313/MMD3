@@ -1007,6 +1007,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
   gap: var(--galleriSpacer); 
+  margin-bottom: var(--desktopSectionSpacer);
 }
 
 .imageWrapper img{
