@@ -186,7 +186,7 @@ img {
 }
 
 
-.globalNavigation a {
+.forsideGlobalNavigation a {
   text-decoration: none;
   color: var(--hvid);
   font-family: "delaney", sans-serif;
@@ -260,7 +260,7 @@ span {
 
 /* Hero section */
 
-header {
+.forsideHeader {
   background-image: url("../images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.jpg");
   background-size: cover;
   background-position: center 15%;
