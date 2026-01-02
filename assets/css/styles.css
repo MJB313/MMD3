@@ -136,6 +136,10 @@ h2 {
   color: var(--hvid);
 }
 
+.centreretH2{
+  text-align: center;
+}
+
 p {
   font-size: var(--desktopBroedtekst);
 }
@@ -191,6 +195,10 @@ img {
   color: var(--hvid);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
+}
+
+.globalNavigation a{
+  color: var(--sort);
 }
 
 .globalNavigation a:hover {
@@ -261,10 +269,9 @@ span {
 /* Hero section */
 
 .forsideHeader {
-  background-image: url("../images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.jpg");
   background-size: cover;
   background-position: center 15%;
-  height: 90vh;
+  height: 175px;
 }
 
 .containerHeroImage {
@@ -338,6 +345,12 @@ span {
   background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
   background-size: cover;
   background-position: center;
+}
+.z-layout img {
+  flex: 1;
+  width: 100%;
+  height: 467px;
+  object-fit: cover;
 }
 
 .z-layout div h2 {
@@ -427,7 +440,7 @@ span {
   margin-bottom: var(--desktopSectionSpacer);
 }
 
-.gallery img {
+.gallery img, .imageWrapper img{
   max-width: 100%;
   width: 100%;
   height: 300px;
@@ -871,4 +884,132 @@ h1 {
   padding-bottom: 0;
   gap: 1.5rem;
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Image galler */
+
+.galleriSection h2{
+  text-align: center;
+}
+
+.imageWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
+  gap: var(--galleriSpacer); 
+}
+
+.imageWrapper img{
+  height: 467px;
+  max-width: 100%;
 }
