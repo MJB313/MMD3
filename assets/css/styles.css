@@ -801,6 +801,7 @@ h1 {
 .z-layout{
     gap: var(--gutterGapMobile);
     margin-bottom: var(--mobileSectionSpacer);
+    padding-top: var(--mobileSectionSpacer);
 }
 
 /* Anmeldelser */
