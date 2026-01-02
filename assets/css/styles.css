@@ -188,7 +188,7 @@ img {
 
 .globalNavigation a {
   text-decoration: none;
-  color: var(--hvid);
+  color: var(--sort);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
 }
@@ -241,9 +241,18 @@ ul.dropdown li a {
   color: var(--hvid);
 }
 
+.sort {
+  color: var(--sort);
+}
+
+.globalNavigation .sort i{
+  color: var(--sort);
+}
+
 .burger-btn i {
   color: var(--hvid);
 }
+
 
 .galleri {
   position: relative;
@@ -261,7 +270,6 @@ span {
 /* Hero section */
 
 header {
-  background-image: url("../images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.jpg");
   background-size: cover;
   background-position: center 15%;
   height: 90vh;
@@ -740,7 +748,7 @@ Media querries
 
   /* Hero sektion */
 
-  header {
+  .forsideHeader {
     background-image: url("../images/mobile/brudepar-11-ved-lokation-vandret-mobile.jpg");
   }
 
