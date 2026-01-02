@@ -632,7 +632,7 @@ Media querries
     flex-direction: column-reverse;
   }
 
-  .z-layout div {
+  .z-layoutForside div {
     height: 250px;
     flex: none;
   }
