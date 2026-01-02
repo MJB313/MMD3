@@ -1,58 +1,119 @@
-const reviews = document.querySelectorAll('.review');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+document.addEventListener("DOMContentLoaded", () => {
 
-let current = 0;
+// Burger menu
+  const burgerBtn = document.querySelector(".burger-btn");
+  const navLinks = document.querySelector(".navLinks");
 
-// Initialize reviews: only the first one is active, others off-screen
-reviews.forEach((review, i) => {
-  if (i === current) {
-    review.style.transform = 'translateX(0)';
-    review.style.zIndex = '2';
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  }
+
+// Mobile dropdown nav
+  const dropdownItems = document.querySelectorAll(".galleri");
+
+  dropdownItems.forEach(item => {
+    const dropdown = item.querySelector(".dropdown");
+    if (!dropdown) return;
+
+    item.addEventListener("click", e => {
+      if (window.innerWidth <= 1400) {
+
+        if (e.target.closest(".dropdown")) return;
+
+        e.preventDefault();
+
+        dropdownItems.forEach(other => {
+          if (other !== item) {
+            other.querySelector(".dropdown")?.classList.remove("showDropdown");
+          }
+        });
+
+        dropdown.classList.toggle("showDropdown");
+      }
+    });
+  });
+
+
+const nav = document.querySelector(".globalNavigation");
+
+let lastScrollY = window.scrollY;
+let scrollTimeout;
+
+window.addEventListener("scroll", () => {
+  const current = window.scrollY;
+
+  nav.classList.toggle("scrolled", current > 600);
+
+  if (current > lastScrollY && current > 150) {
+    nav.classList.add("hide");
   } else {
-    review.style.transform = 'translateX(100%)';
-    review.style.zIndex = '1';
-  }
-});
-
-function showReview(newIndex, direction) {
-  if (newIndex === current) return;
-
-  const currentReview = reviews[current];
-  const nextReview = reviews[newIndex];
-
-  if (direction === 'right') {
-    nextReview.style.transform = 'translateX(100%)';
-    nextReview.style.zIndex = '3';
-    requestAnimationFrame(() => {
-      currentReview.style.transform = 'translateX(-100%)';
-      nextReview.style.transform = 'translateX(0)';
-    });
-  } else if (direction === 'left') {
-    nextReview.style.transform = 'translateX(-100%)';
-    nextReview.style.zIndex = '3';
-    requestAnimationFrame(() => {
-      currentReview.style.transform = 'translateX(100%)';
-      nextReview.style.transform = 'translateX(0)';
-    });
+    nav.classList.remove("hide");
   }
 
-  // After animation, reset z-index
-  setTimeout(() => {
-    currentReview.style.zIndex = '1';
-    nextReview.style.zIndex = '2';
-  }, 500); // match your CSS transition duration
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    nav.classList.remove("hide");
+  }, 150);
 
-  current = newIndex;
-}
-
-// Button handlers
-prevBtn.addEventListener('click', () => {
-  let newIndex = (current - 1 + reviews.length) % reviews.length;
-  showReview(newIndex, 'left');
+  lastScrollY = current;
 });
 
-nextBtn.addEventListener('click', () => {
-  let newIndex = (current + 1) % reviews.length;
-  showReview(newIndex, 'right');
+
+  /* ================= SLIDER AI ================= */
+  const reviews = document.querySelectorAll(".review");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+
+  if (!reviews.length || !prevBtn || !nextBtn) return;
+
+  let current = 0;
+
+  // Initialize slider
+  reviews.forEach((review, i) => {
+    review.style.transition = "transform 0.5s ease";
+
+    if (i === current) {
+      review.style.transform = "translateX(0)";
+      review.style.zIndex = "2";
+    } else {
+      review.style.transform = "translateX(100%)";
+      review.style.zIndex = "1";
+    }
+  });
+
+  function showReview(newIndex, direction) {
+    if (newIndex === current) return;
+
+    const currentReview = reviews[current];
+    const nextReview = reviews[newIndex];
+
+    nextReview.style.zIndex = "3";
+    nextReview.style.transform =
+      direction === "right" ? "translateX(100%)" : "translateX(-100%)";
+
+    requestAnimationFrame(() => {
+      currentReview.style.transform =
+        direction === "right" ? "translateX(-100%)" : "translateX(100%)";
+      nextReview.style.transform = "translateX(0)";
+    });
+
+    setTimeout(() => {
+      currentReview.style.zIndex = "1";
+      nextReview.style.zIndex = "2";
+    }, 500);
+
+    current = newIndex;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    showReview((current + 1) % reviews.length, "right");
+  });
+
+  prevBtn.addEventListener("click", () => {
+    showReview((current - 1 + reviews.length) % reviews.length, "left");
+  });
+
 });
+
