@@ -14,29 +14,36 @@
     />
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <script src="./assets/js/app.js" defer></script>
-    <meta name="description" content="Jeg hedder Dan Mortensen, jeg er bryllupsfotograf i Aalborg og Nordjylland. Se galleri, priser og få smukke bryllupsbilleder leveret hurtigt." />
+    <meta
+      name="description"
+      content="Jeg hedder Dan Mortensen, jeg er bryllupsfotograf i Aalborg og Nordjylland. Se galleri, priser og få smukke bryllupsbilleder leveret hurtigt."
+    />
   </head>
   <body>
     <header class="forsideHeader">
       <nav class="forsideGlobalNavigation">
-        <!-- Logo (left) -->
+
         <a href="index.html" class="navLogo">
+          <!-- Alle billeder er taget fra DM's website, hele vejen ned igennem website, pånær, hvis vi linker til andet. -->
           <img
             src="./assets/images/dan-mortensen-logo-hvid.png"
             alt="Dan Mortensen logo"
           />
         </a>
 
-        <!-- Desktop / Mobile nav ULs -->
         <div class="navLinks">
           <ul class="navLeft">
             <li><a href="./index.html">Forside</a></li>
             <li class="galleri">
               <a href="galleri.html">Galleri <span>▼</span></a>
               <ul class="dropdown">
-                <li><a href="bryllupsforberedelse.html">Bryllupsforberedelse</a></li>
+                <li>
+                  <a href="bryllupsforberedelse.html">Bryllupsforberedelse</a>
+                </li>
                 <li><a href="viesle.html">Vielse</a></li>
-                <li><a href="bryllupsportraetter.html">Bryllupsportrætter</a></li>
+                <li>
+                  <a href="bryllupsportraetter.html">Bryllupsportrætter</a>
+                </li>
                 <li><a href="bryllupsfest.html">Bryllupsfest</a></li>
               </ul>
             </li>
@@ -50,7 +57,6 @@
           </ul>
         </div>
 
-        <!-- Burger (right) -->
         <div class="nav_menu_mobile_wrapper">
           <button class="burger-btn">
             <i class="fa-solid fa-bars"></i>
@@ -98,6 +104,7 @@
                 <img
                   src="./assets/images/bryllupsfest/brudepar-1-der-skaerer-kage.avif"
                   alt="Brudepar der skærer bryllupskagen"
+                  loading="lazy"
                 />
                 <h3>Galleri</h3>
                 <p>
@@ -113,6 +120,7 @@
                   src="./assets/images/dan-mortensen-bryllupsfotograf-i-nordjylland.avif"
                   alt="Dan Mortensen bryllupsfotograf"
                   class="objectPositioning"
+                  loading="lazy"
                 />
                 <h3>Om mig</h3>
                 <p>Læs mere om mig som person og hvad jeg har at tilbyde</p>
@@ -124,6 +132,7 @@
                 <img
                   src="./assets/images/bryllupsfest/gommens-placering-til-bryllupsfesten.avif"
                   alt="Borddekoration for gommens plads"
+                  loading="lazy"
                 />
                 <h3>Priser</h3>
                 <p>Se hvilke pakkepriser jeg har i mit sortiment</p>
@@ -135,35 +144,108 @@
       </section>
 
       <section class="gallery">
-        <img
-          src="./assets/images/bryllupsplanlaegning.avif"
-          alt=""
-          class="span2"
-        />
-        <img
-          src="./assets/images/bryllupsfest/brud-10-kastet-i-luften.avif"
-          alt=""
-          class="span3"
-        />
-        <img
-          src="./assets/images/bryllupsfest/brudepar-3-der-giver-hinanden-kage.avif"
-          alt=""
-          class="span2"
-        />
-        <img
-          src="./assets/images/bryllupsfest/bord-og-stole-til-bryllupsfest.avif"
-          alt=""
-        />
-        <img
-          src="./assets/images/bryllupsfest/brudgom-17-med-best-mans-der-kysser-ham-paa-kinden.avif"
-          alt=""
-        />
-        <img
-          src="./assets/images/bryllupsfest/bord-og-stole-til-bryllupsfest.avif"
-          alt=""
-        />
-        <img src="./assets/images/vielse/brud-3-og-far.avif" alt="" />
-        <img src="./assets/images/vielse/brudgom-1-og-datter.avif" alt="" />
+        <picture>
+          <source
+            srcset="./assets/images/mobile/bryllupsplanlaegning-mobile.jpg"
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsplanlaegning.avif"
+            alt="Bryllupsplanlægning"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="./assets/images/mobile/brud-10-kastet-i-luften-mobile.jpg"
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsfest/brud-10-kastet-i-luften.avif"
+            alt="Brud kastet i luften"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="
+              ./assets/images/mobile/brudepar-3-der-giver-hinanden-kage-mobile.jpg
+            "
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsfest/brudepar-3-der-giver-hinanden-kage.avif"
+            alt="Brudepar der giver hinanden kage"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="
+              ./assets/images/mobile/bord-og-stole-til-bryllupsfest-mobile.jpg
+            "
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsfest/bord-og-stole-til-bryllupsfest.avif"
+            alt="Bord og stole til bryllupsfest"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="
+              ./assets/images/mobile/brudgom-17-med-best-mans-der-kysser-ham-paa-kinden-mobile.jpg
+            "
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsfest/brudgom-17-med-best-mans-der-kysser-ham-paa-kinden.avif"
+            alt="Brudgom med best mans kysser ham på kinden"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="./assets/images/mobile/brud-3-og-far-mobile.jpg"
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/vielse/brud-3-og-far.avif"
+            alt="Brud med far"
+            loading="lazy"
+          />
+        </picture>
+
+        <picture>
+          <source
+            srcset="./assets/images/mobile/brudgom-1-og-datter-mobile.jpg"
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/vielse/brudgom-1-og-datter.avif"
+            alt="Brudgom med datter"
+            loading="lazy"
+          />
+        </picture>
+        <picture>
+          <source
+            srcset="
+              ./assets/images/mobile/brudepar-6-i-skoven-bryllupsportraet-jpg3-mobile.jpg
+            "
+            media="(max-width: 650px)"
+          />
+          <img
+            src="./assets/images/bryllupsportrætter/brudepar-6-i-skoven-bryllupsportraet-jpg3.avif"
+            alt="Brudepar i skoven"
+            loading="lazy"
+          />
+        </picture>
       </section>
 
       <section class="reviews">
@@ -175,6 +257,7 @@
               src="./assets/images/Testimonials/nikki.png"
               alt="Tidligere kunde af Dan Mortensen, som giver et review"
               class="reviewer-img"
+              loading="lazy"
             />
             <p class="reviewer-name">Niki Mouridsen</p>
             <p class="review-date">10. November 2025</p>
@@ -197,6 +280,7 @@
               src="./assets/images/Testimonials/anna.png"
               alt="Tidligere kunde af Dan Mortensen, som giver et review"
               class="reviewer-img"
+              loading="lazy"
             />
             <p class="reviewer-name">Anna Callø</p>
             <p class="review-date">for 3 år siden</p>
@@ -218,6 +302,7 @@
               src="./assets/images/Testimonials/david.png"
               alt="Tidligere kunde af Dan Mortensen, som giver et review"
               class="reviewer-img"
+              loading="lazy"
             />
             <p class="reviewer-name">David Dahl</p>
             <p class="review-date">for 4 år siden</p>
@@ -227,6 +312,7 @@
               til at smile.”
             </p>
             <div class="review-stars">
+              <!-- https://fontawesome.com/icons/star?s=solid -->
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i>
@@ -238,6 +324,7 @@
               src="./assets/images/Testimonials/eckhart.png"
               alt="Tidligere kunde af Dan Mortensen, som giver et review"
               class="reviewer-img"
+              loading="lazy"
             />
             <p class="reviewer-name">Eckhart Pedersen</p>
             <p class="review-date">for 6 måneder siden</p>
@@ -255,7 +342,7 @@
           </div>
 
           <!-- Arrows -->
-           <!-- https://fontawesome.com/icons/chevron-left?s=solid -->
+          <!-- https://fontawesome.com/icons/chevron-left?s=solid -->
           <button class="prev"><i class="fas fa-chevron-left"></i></button>
           <!-- https://fontawesome.com/icons/chevron-right?s=solid -->
           <button class="next"><i class="fas fa-chevron-right"></i></button>
@@ -277,19 +364,30 @@
 
         <div class="footer-logo">
           <!-- Dan Mortensens Logo -->
-          <a href="index.html"><img src="./assets/images/dan-mortensen-logo-sort.png" alt="Dan Mortensens logo" /></a>
+          <a href="index.html"
+            ><img
+              src="./assets/images/dan-mortensen-logo-sort.png"
+              alt="Dan Mortensens logo"
+              loading="lazy"
+          /></a>
         </div>
 
         <div class="footer-item">
           <i class="fa-solid fa-star"></i>
           <!-- Dan Mortensens Google Reviews -->
-          <a href="https://www.google.com/search?sa=X&sca_esv=da380046654dbbf2&sxsrf=AE3TifMDsLzSffeVha6F7KsPUB60-VH0bA:1767644587502&q=Fotograf+Dan+Mortensen+Anmeldelser&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDIys7A0NzQ1MrC0NDO0MDQ2NdjAyPiKUcktvyQ_vSgxTcElMU_BN7-oJDWvODVPwTEvNzUnJTWnOLVoESsRigDuH2R7ZQAAAA&rldimm=12268971520996181350&tbm=lcl&hl=da-DK&ved=2ahUKEwins-idnfWRAxXHHXcKHfonMVoQ9fQKegQIThAG&biw=1920&bih=911&dpr=1#lkt=LocalPoiReviews" target="_blank">Anmeldelser</a>
+          <a
+            href="https://www.google.com/search?sa=X&sca_esv=da380046654dbbf2&sxsrf=AE3TifMDsLzSffeVha6F7KsPUB60-VH0bA:1767644587502&q=Fotograf+Dan+Mortensen+Anmeldelser&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDIys7A0NzQ1MrC0NDO0MDQ2NdjAyPiKUcktvyQ_vSgxTcElMU_BN7-oJDWvODVPwTEvNzUnJTWnOLVoESsRigDuH2R7ZQAAAA&rldimm=12268971520996181350&tbm=lcl&hl=da-DK&ved=2ahUKEwins-idnfWRAxXHHXcKHfonMVoQ9fQKegQIThAG&biw=1920&bih=911&dpr=1#lkt=LocalPoiReviews"
+            target="_blank"
+            >Anmeldelser</a
+          >
         </div>
 
         <div class="footer-item">
           <i class="fa-solid fa-shield-halved"></i>
           <!-- Dan Mortensens egen GDPR -->
-          <a href="https://www.danmortensen.com/gdpr" target="_blank">GDPR og privatlivspolitik</a>
+          <a href="https://www.danmortensen.com/gdpr" target="_blank"
+            >GDPR og privatlivspolitik</a
+          >
         </div>
       </div>
     </footer>

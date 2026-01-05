@@ -208,7 +208,7 @@ img {
 }
 
 
-.globalNavigation a:hover {
+.globalNavigation a:hover, .forsideGlobalNavigation a:hover {
   text-decoration: underline;
 }
 
@@ -723,6 +723,22 @@ Media querries
   .globalNavigation li:hover > ul.dropdown {
     display: flex;
   }
+
+  /* Only show dropdown on hover for desktop screens */
+@media (min-width: 1001px) {
+  .galleri .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* add background, shadow etc as needed */
+  }
+
+  .galleri:hover .dropdown {
+    display: block;
+  }
+}
+
 }
 
 @media (max-width: 1000px) {
