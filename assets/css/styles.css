@@ -158,6 +158,13 @@ img {
   transition: 0.3s ease-in-out;
 }
 
+.globalNavigation a {
+  text-decoration: none;
+  color: var(--sort);
+  font-family: "delaney", sans-serif;
+  font-size: var(--desktopNav);
+}
+
 .globalNavigation.hide {
   transform: translateY(-100%);
 }
@@ -258,6 +265,12 @@ span {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.forsideGlobalNavigation.scrolled {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
 /* Hero section */
 
 .forsideHeader {
@@ -265,6 +278,14 @@ span {
   background-size: cover;
   background-position: center 15%;
   height: 90vh;
+}
+.normalHeader {
+height: 175px;
+color: var(--sort);
+}
+
+.normalHeader li a{
+  color: var(--sort);
 }
 
 .containerHeroImage {

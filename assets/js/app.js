@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-const nav = document.querySelector(".globalNavigation");
+const nav = document.querySelector(".forsideGlobalNavigation");
 
 let lastScrollY = window.scrollY;
 let scrollTimeout;
@@ -59,6 +59,36 @@ window.addEventListener("scroll", () => {
 
   lastScrollY = current;
 });
+
+
+
+const normalNav = document.querySelector(".globalNavigation");
+
+let normalNavLastScrollY = window.scrollY;
+let normalNavScrollTimeout;
+
+window.addEventListener("scroll", () => {
+  const current = window.scrollY;
+
+  // 👇 STARTS MUCH EARLIER
+  normalNav.classList.toggle("scrolled", current > 100);
+
+  if (current > normalNavLastScrollY && current > 50) {
+    normalNav.classList.add("hide");
+  } else {
+    normalNav.classList.remove("hide");
+  }
+
+  clearTimeout(normalNavScrollTimeout);
+  normalNavScrollTimeout = setTimeout(() => {
+    normalNav.classList.remove("hide");
+  }, 150);
+
+  normalNavLastScrollY = current;
+});
+
+
+
 
   // Accodion
 
