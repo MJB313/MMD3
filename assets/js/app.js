@@ -146,102 +146,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= ACCORDION / FAQ ================= */
-  const { createApp } = Vue;
-
-  createApp({
-    data() {
-      return {
-        faqData: [
-          {
-            spoergsmaal: "Hvor mange billeder får vi - og hvornår?",
-            svar: "Jeg har ikke noget bestemt antal billeder jeg leverer. Jeg tager det antal billeder som jeg har brug for, for at dække den tid jeg er booket. Booker du mig for en hel dag, vil du typisk modtage omkring 500 færdigredigerede billeder. Jeg leverer altid jeres billeder senest 14 dage efter brylluppet.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvad sker der hvis fotografen bliver syg?",
-            svar: "Jeg har indtil videre fotograferet masser af bryllupper og har endnu ikke måttet melde afbud. Hvis uheldet skulle være ude, er jeg med i et fotonetværk med 5 andre fotografer, hvor vi hjælper hinanden ved for eksempel sygdom. Så der vil altid komme en fotograf. Det kan jeg garantere.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvad er inkluderet i prisen?",
-            svar: 'Mine priser starter ved 6.500-, og alle pakker inkluderer redigering, online galleri og kørsel. Så den pris I ser, er den pris I skal betale. Se mine pakkeløsninger her: <a href="priser.html">link til pakker</a>',
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvordan fungerer booking og betaling?",
-            svar: "Når I er klar til at booke, sender jeg en kort ordrebekræftelse. Jeg opkræver et depositum på 1.500,- ved booking. Restbeløbet betales efter brylluppet og inden udlevering af de færdige billeder. Så er alt klart og professionelt fra start til slut.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Kan vi mødes før vi beslutter os?",
-            svar: "Meget gerne. Et uforpligtende møde – online eller fysisk – er en god måde at lære hinanden at kende og sikre, at kemien passer.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Må vi se et helt bryllup som du har fotograferet?",
-            svar: "Selvfølgelig. Jeg sender gerne et komplet galleri, så I kan se, hvordan jeg dækker hele dagen – ikke kun højdepunkterne.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvordan foregår par-portrætterne - skal vi posere meget?",
-            svar: "Jeg guider jer lidt, men holder det afslappet og naturligt. En af mine vigtigste opgaver er at skabe en god stemning, så I ikke tænker over at I bliver fotograferet. Det vigtigste er, at I er jer selv – Så klarer jeg resten.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvor lang tid skal vi sætte af til parfotograferingen?",
-            svar: "Cirka 30–45 minutter plejer at være nok, gerne i et roligt tidsrum, fx lige efter vielsen. Jeg hjælper jer med at lægge det ind i jeres tidsplan.",
-            open: false,
-          },
-          {
-            spoergsmaal: "Hvordan modtager vi billederne?",
-            svar: "I får et link hvor I kan downloade billederne i høj opløsning og web opløsning. I kan dele linket med dem I har lyst til. Linket er aktivt i 6 måneder. Derefter skal I kontakte mig igen for at få adgang. Jeg gemmer alle billeder i 5 år.",
-            open: false,
-          },
-        ],
-      };
-    },
-    methods: {
-      toggle(index) {
-        this.faqData[index].open = !this.faqData[index].open;
-      },
-    },
-  }).mount("#app");
-
   /* ================= GALLERY MODALS ================= */
-  const pictures = Array.from(document.querySelectorAll(".galleri_billede_active"));
-  const modal = document.getElementById("globalModal");
-  const modalImage = document.getElementById("modalImage");
-  const closeBtn = modal.querySelector(".buttonClose");
-  const leftArrow = modal.querySelector(".modal-prev");
-  const rightArrow = modal.querySelector(".modal-next");
+  const pictures = Array.from(document.querySelectorAll('.galleri_billede_active'));
+  const modal = document.getElementById('globalModal');
+  const modalImage = document.getElementById('modalImage');
+  const closeBtn = modal.querySelector('.buttonClose');
+  const leftArrow = modal.querySelector('.modal-prev');
+  const rightArrow = modal.querySelector('.modal-next');
 
   let currentIndex = 0;
 
+  // Open modal
   pictures.forEach((pic, index) => {
-    pic.addEventListener("click", () => {
+    pic.addEventListener('click', (e) => {
+      e.stopPropagation();
       currentIndex = index;
-      const img = pic.querySelector("img");
+      const img = pic.querySelector('img');
       modalImage.src = img.src;
-      modal.classList.add("active");
+      modal.classList.add('active');
     });
   });
 
-  closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+  // Close modal
+  closeBtn.addEventListener('click', () => modal.classList.remove('active'));
 
-  modal.addEventListener("click", (e) => {
-    if (!e.target.closest(".modal_box")) modal.classList.remove("active");
+  // Click outside modal box closes it
+  modal.addEventListener('click', (e) => {
+    if (!e.target.closest('.modal_box')) {
+      modal.classList.remove('active');
+    }
   });
 
-  leftArrow.addEventListener("click", (e) => {
+  // Navigation arrows
+  leftArrow.addEventListener('click', (e) => {
     e.stopPropagation();
     currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
-    modalImage.src = pictures[currentIndex].querySelector("img").src;
+    modalImage.src = pictures[currentIndex].querySelector('img').src;
   });
 
-  rightArrow.addEventListener("click", (e) => {
+  rightArrow.addEventListener('click', (e) => {
     e.stopPropagation();
     currentIndex = (currentIndex + 1) % pictures.length;
-    modalImage.src = pictures[currentIndex].querySelector("img").src;
+    modalImage.src = pictures[currentIndex].querySelector('img').src;
   });
+
 });
