@@ -12,10 +12,42 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <script src="./assets/js/app.js" defer></script>
     <meta name="description" content="" />
   </head>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper(".swiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 3,
+      spaceBetween: 0,
+      initialSlide: 1,
+
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: false,
+      },
+
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+</script>
+
   <body>
     <header class="forsideHeader">
       <nav class="globalNavigation forsideGlobalNavigation">
@@ -96,6 +128,29 @@
         </article>
       </section>
 
+      <section class="carousel-section">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <img src="./assets/images/bryllupsportrætter/brudepar-6-i-skoven-bryllupsportraet.avif" alt="Slide 1">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="./assets/images/vielse/brudepar-5-i-kirken.avif" alt="Slide 2">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg" alt="Slide 3">
+      </div>
+
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
       <section class="moedeSektion">
         <p>Intesserede i et møde?</p>
         <a href="kontakt.html">Start rejsen</a>
@@ -136,3 +191,64 @@
     </footer>
   </body>
 </html>
+
+
+<style>
+  /* Karrusel */
+
+.carousel-section {
+  padding: 50px 0;
+  --swiper-theme-color: #000;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.swiper-slide {
+  width: 100%;
+  max-width: 450px;
+  overflow: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0.5;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.swiper-slide:nth-child(1) img,
+.swiper-slide:nth-child(3) img {
+  object-position: center 20%;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.swiper-slide-prev,
+.swiper-slide-next {
+  opacity: 0.8;
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 30px;
+}
+
+</style>
