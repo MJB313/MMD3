@@ -1340,20 +1340,6 @@ h1 {
 
 }
 
-/* .tidslinjeTekstBillede::before {
-  content: "\f030";
-  font-family: "Font Awesome 7 Free";
-  font-weight: 900;
-  font-size: 5rem;
-  color: var(--sort);
-
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -8rem;
-  z-index: 10;
-} */
-
 .tidslinjeTekstBillede img {
   max-height: 370px;
   height: 370px;
@@ -1382,11 +1368,29 @@ h1 {
 }
 
 .tidslinjeTekstBillede img {
-  height: 200px;
+  height: 300px;
 }
 }
 
 @media screen and (max-width:1000px) {
+
+  main .accordion {
+    font-size: 1rem;
+    height: auto;
+    padding: 1rem;
+  }
+
+.accordion-content {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--hvid);
+  padding-block: 0.5rem;
+}
+
+
+main .accordion-content p {
+  padding: var(--mobileBroedtekstBilledeOverskriftSpacer);
+}
 
   .tidslinjeWrapper {
   gap: 1rem;
@@ -1405,9 +1409,7 @@ h1 {
   margin-bottom: 10rem;
 }
 
-.tidslinjeTekstBillede img {
-  height: 150px;
-}
+
 }
 
 
@@ -1483,3 +1485,64 @@ h1 {
 }
 
 
+
+/* Accordion */
+
+
+.accordionWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: var(--gutterGapMobile);
+}
+
+/*tilføjer en pointer så der kommer en hånd frem, når man hover over knappen*/
+.accordion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  height: 97px;
+  font-size: 2rem;
+  padding: var(--desktopBroedtekstBilledeOverskriftSpacer);
+  font-weight: bold;
+  font-family: "Assistant", sans-serif;
+  box-shadow: var(--cardShadow);
+  margin-bottom: 1.5rem;
+  border: none;
+}
+
+/*sætter indholdet af accodions til ikke at være synligt med display none*/
+.accordion-content {
+  margin-top: -1.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--hvid);
+  padding-block: 1rem;
+}
+
+
+
+/*class =open der i JS bliver tilføjet ved klik på knappen. Så denne CSS regel gælder for en button/knap med begge class*/
+.accordion-content.open {
+  display: block;
+}
+
+.accordion:hover {
+  background-color: var(--hvid);
+}
+
+.accordion-content p {
+  padding: var(--desktopBroedtekstBilledeOverskriftSpacer);
+}
+
+
+.accordion i {
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.accordion.open i {
+  transform: rotate(-90deg);
+}

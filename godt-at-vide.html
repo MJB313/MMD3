@@ -13,6 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="./assets/js/app.js" defer></script>
     <meta name="description" content="" />
   </head>
@@ -110,56 +111,78 @@
 
           <div class="tidslinjeTekstBillede">
             <div>
-              <p><b>Bryllupsforberedelse</b></p>
+              <p><b>Vielse</b></p>
               <p>
-                Forberedelserne er ofte rolige og intime og giver plads til
-                mange stemningsfulde øjeblikke. Det er her, dagen langsomt
-                begynder, og hvor detaljerne får betydning. Det er en god idé at
-                samle vigtige ting som ringe, invitationer og accessories ét
-                sted, så de er nemme at fotografere. Sørg også for god plads og
-                naturligt lys, hvis muligt.
+                Vielsen er dagens mest betydningsfulde øjeblik og forløber ofte hurtigt. Det er en fordel at afklare rammerne på forhånd, fx om der er særlige regler for fotografering i kirken eller ved ceremonien. Rolige bevægelser og naturlige øjeblikke skaber de mest ægte billeder, og det er ikke nødvendigt at kigge mod kameraet.
               </p>
             </div>
             <img
-              src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg"
-              alt="Brud der er ved at gøre sig klar foran spejlet."
+              src="./assets/images/vielse/ring-paa-finger-i-kirke.avif"
+              alt="Brudgom, der giver bruden vielsesring på i kirken"
             />
           </div>
 
           <div class="tidslinjeTekstBillede">
             <div>
-              <p><b>Bryllupsforberedelse</b></p>
+              <p><b>Bryllupsportrætter</b></p>
               <p>
-                Forberedelserne er ofte rolige og intime og giver plads til
-                mange stemningsfulde øjeblikke. Det er her, dagen langsomt
-                begynder, og hvor detaljerne får betydning. Det er en god idé at
-                samle vigtige ting som ringe, invitationer og accessories ét
-                sted, så de er nemme at fotografere. Sørg også for god plads og
-                naturligt lys, hvis muligt.
+                Bryllupsportrætterne er et roligt pusterum midt på dagen. Her handler det ikke om at posere, men om at være jer selv og nyde et øjeblik sammen. I behøver ikke have erfaring foran kameraet, det vigtigste er nærvær og tid.
               </p>
             </div>
             <img
-              src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg"
-              alt="Brud der er ved at gøre sig klar foran spejlet."
+              src="./assets/images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.jpg"
+              alt="Brudepar der er ude og få taget portrætfotos ved lokation."
             />
           </div>
 
           <div class="tidslinjeTekstBillede">
             <div>
-              <p><b>Bryllupsforberedelse</b></p>
+              <p><b>Bryllupsfest</b></p>
               <p>
-                Forberedelserne er ofte rolige og intime og giver plads til
-                mange stemningsfulde øjeblikke. Det er her, dagen langsomt
-                begynder, og hvor detaljerne får betydning. Det er en god idé at
-                samle vigtige ting som ringe, invitationer og accessories ét
-                sted, så de er nemme at fotografere. Sørg også for god plads og
-                naturligt lys, hvis muligt.
+                Bryllupsfesten markerer afslutningen på dagen og er fyldt med energi og glæde. Her slippes stemningen løs med dans, bevægelse og spontane øjeblikke. God belysning og plads på dansegulvet er med til at skabe de bedste rammer, men vigtigst er, at I og jeres gæster bare nyder festen.
               </p>
             </div>
             <img
-              src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg"
-              alt="Brud der er ved at gøre sig klar foran spejlet."
+              src="./assets/images/bryllupsfest/brudepar-3-der-giver-hinanden-kage.avif"
+              alt="Brudepar der giver hinanden kage i munden til bryllupsfesten"
             />
+          </div>
+        </div>
+      </section>
+
+      <!-- Her bliver Vue-appen bliver bundet til #app -->
+      <section class="accordionWrapper" id="app">
+        <h2>Ofte stillede spørgsmål</h2>
+        <div class="accordion-section">
+          <!-- Vi laver et V-for loop, så Vue genererer hvert spørgsmål/svar her med v-for -->
+          <div
+            v-for="(item, index) in faqData"
+            :key="index"
+            class="accordion-item"
+          >
+            <!-- v-for looper igennem alle elementer i Array i vores JS dokument -->
+            <!-- :key = unik nøgle for hver iteration, vi har valgt ikke at give specifikke id eller lign, så den skal bruge Index til at se hvilke numre mm. der er for hvert accordion og tildeler den et nummer -->
+
+            <button
+              class="accordion"
+              :class="{ open: item.open }"
+              @click="toggle(index)"
+            >
+              <!-- click-funktionen skifter item.open true/false -->
+
+              {{ item.spoergsmaal }}
+              <!-- Dynamisk spørgsmål fra arrayet -->
+
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+
+            <!-- Dette er svaret på spørgsmålet i FAQ -->
+            <div class="accordion-content" v-show="item.open">
+              <!-- v-show="item.open" viser kun svaret, hvis item.open er true, som den bliver ved at klikke på accordion da vi toggler mellem true og false. Vue håndterer dette dynamisk, når man klikker på knappen -->
+
+              <p v-html="item.svar"></p>
+              <!-- v-html = indsætter HTML-indhold fra item.svar, så links og formatering virker -->
+            </div>
           </div>
         </div>
       </section>
