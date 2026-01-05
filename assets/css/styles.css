@@ -1070,8 +1070,8 @@ h1 {
 
 .buttonClose {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 2rem;
+  right: 2rem;
   font-size: 2rem;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
@@ -1080,7 +1080,8 @@ h1 {
   padding: 0.2rem 0.4rem;
 }
 
-.arrow {
+.modal-prev,
+.modal-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1089,14 +1090,20 @@ h1 {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  z-index: 10;
 }
 
-.arrow-left {
+.modal-prev {
   left: 0.5rem;
 }
 
-.arrow-right {
+.modal-next {
   right: 0.5rem;
+}
+
+.modal-prev:focus,
+.modal-next:focus {
+  outline: none;
 }
 

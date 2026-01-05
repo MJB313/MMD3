@@ -118,8 +118,9 @@ const pictures = Array.from(document.querySelectorAll('.galleri_billede_active')
 const modal = document.getElementById('globalModal');
 const modalImage = document.getElementById('modalImage');
 const closeBtn = modal.querySelector('.buttonClose');
-const leftArrow = modal.querySelector('.arrow-left');
-const rightArrow = modal.querySelector('.arrow-right');
+const leftArrow = modal.querySelector('.modal-prev');
+const rightArrow = modal.querySelector('.modal-next');
+
 
 let currentIndex = 0;
 
