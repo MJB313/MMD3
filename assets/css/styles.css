@@ -389,6 +389,9 @@ color: var(--sort);
 .z-layout div {
   width: 100%;
   height: 467px;
+
+}
+.forsideBog{
   /* Billede genereret med AI */
   background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
   background-size: cover;
@@ -729,10 +732,6 @@ Media querries
     display: flex;
   }
 
-  /* Only show dropdown on hover for desktop screens */
-@media (min-width: 1001px) {
-
-}
 
 }
 
@@ -890,6 +889,16 @@ h1 {
   .reviews h2 {
     font-size: 2rem;
   } 
+
+  
+body .generalInformation {
+  padding-top: 0;
+}
+
+body .generalInformation li {
+  font-size: var(--mobileBroedtekst);
+}
+
 }
 
 
@@ -996,6 +1005,7 @@ body .modal-next {
   padding: 0.2rem 0.4rem;
   z-index: 10;
 }
+
 }
 
 
@@ -1716,6 +1726,7 @@ main .accordion-content p {
 }
 
 .prisWrapper article {
+  max-width: 100%;
   height: 800px;
   padding: 40px 30px;
   color: #fff;
@@ -1783,6 +1794,10 @@ background:
 
 
 @media screen and (max-width: 650px) {
+
+  body .prisWrapper {
+    grid-template-columns: 1fr;
+  }
 
   .prisWrapper article {
     height: auto;
