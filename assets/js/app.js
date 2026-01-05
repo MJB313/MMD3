@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-// Burger menu
+  /* ================= BURGER MENU ================= */
   const burgerBtn = document.querySelector(".burger-btn");
   const navLinks = document.querySelector(".navLinks");
 
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-// Mobile dropdown nav
+  /* ================= MOBILE DROPDOWN NAV ================= */
   const dropdownItems = document.querySelectorAll(".galleri");
 
   dropdownItems.forEach(item => {
@@ -35,85 +35,127 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* ================= NAVIGATION SCROLL BEHAVIOR ================= */
+  const nav = document.querySelector(".globalNavigation");
 
-const nav = document.querySelector(".globalNavigation");
+  let lastScrollY = window.scrollY;
+  let scrollTimeout;
 
-let lastScrollY = window.scrollY;
-let scrollTimeout;
+  window.addEventListener("scroll", () => {
+    const current = window.scrollY;
 
-window.addEventListener("scroll", () => {
-  const current = window.scrollY;
+    nav.classList.toggle("scrolled", current > 600);
 
-  nav.classList.toggle("scrolled", current > 600);
+    if (current > lastScrollY && current > 150) {
+      nav.classList.add("hide");
+    } else {
+      nav.classList.remove("hide");
+    }
 
-  if (current > lastScrollY && current > 150) {
-    nav.classList.add("hide");
-  } else {
-    nav.classList.remove("hide");
-  }
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      nav.classList.remove("hide");
+    }, 150);
 
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    nav.classList.remove("hide");
-  }, 150);
+    lastScrollY = current;
+  });
 
-  lastScrollY = current;
-});
-
-
-  /* ================= SLIDER AI ================= */
+  /* ================= SLIDER ================= */
   const reviews = document.querySelectorAll(".review");
   const prevBtn = document.querySelector(".prev");
   const nextBtn = document.querySelector(".next");
 
-  if (!reviews.length || !prevBtn || !nextBtn) return;
+  if (reviews.length && prevBtn && nextBtn) {
+    let current = 0;
 
-  let current = 0;
+    reviews.forEach((review, i) => {
+      review.style.transition = "transform 0.5s ease";
 
-  // Initialize slider
-  reviews.forEach((review, i) => {
-    review.style.transition = "transform 0.5s ease";
-
-    if (i === current) {
-      review.style.transform = "translateX(0)";
-      review.style.zIndex = "2";
-    } else {
-      review.style.transform = "translateX(100%)";
-      review.style.zIndex = "1";
-    }
-  });
-
-  function showReview(newIndex, direction) {
-    if (newIndex === current) return;
-
-    const currentReview = reviews[current];
-    const nextReview = reviews[newIndex];
-
-    nextReview.style.zIndex = "3";
-    nextReview.style.transform =
-      direction === "right" ? "translateX(100%)" : "translateX(-100%)";
-
-    requestAnimationFrame(() => {
-      currentReview.style.transform =
-        direction === "right" ? "translateX(-100%)" : "translateX(100%)";
-      nextReview.style.transform = "translateX(0)";
+      if (i === current) {
+        review.style.transform = "translateX(0)";
+        review.style.zIndex = "2";
+      } else {
+        review.style.transform = "translateX(100%)";
+        review.style.zIndex = "1";
+      }
     });
 
-    setTimeout(() => {
-      currentReview.style.zIndex = "1";
-      nextReview.style.zIndex = "2";
-    }, 500);
+    function showReview(newIndex, direction) {
+      if (newIndex === current) return;
 
-    current = newIndex;
+      const currentReview = reviews[current];
+      const nextReview = reviews[newIndex];
+
+      nextReview.style.zIndex = "3";
+      nextReview.style.transform =
+        direction === "right" ? "translateX(100%)" : "translateX(-100%)";
+
+      requestAnimationFrame(() => {
+        currentReview.style.transform =
+          direction === "right" ? "translateX(-100%)" : "translateX(100%)";
+        nextReview.style.transform = "translateX(0)";
+      });
+
+      setTimeout(() => {
+        currentReview.style.zIndex = "1";
+        nextReview.style.zIndex = "2";
+      }, 500);
+
+      current = newIndex;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      showReview((current + 1) % reviews.length, "right");
+    });
+
+    prevBtn.addEventListener("click", () => {
+      showReview((current - 1 + reviews.length) % reviews.length, "left");
+    });
   }
 
-  nextBtn.addEventListener("click", () => {
-    showReview((current + 1) % reviews.length, "right");
-  });
+  /* ================= GALLERY MODALS ================= */
+const pictures = Array.from(document.querySelectorAll('.galleri_billede_active'));
+const modal = document.getElementById('globalModal');
+const modalImage = document.getElementById('modalImage');
+const closeBtn = modal.querySelector('.buttonClose');
+const leftArrow = modal.querySelector('.arrow-left');
+const rightArrow = modal.querySelector('.arrow-right');
 
-  prevBtn.addEventListener("click", () => {
-    showReview((current - 1 + reviews.length) % reviews.length, "left");
-  });
+let currentIndex = 0;
 
+// Open modal
+pictures.forEach((pic, index) => {
+  pic.addEventListener('click', () => {
+    currentIndex = index;
+    const img = pic.querySelector('img');
+    modalImage.src = img.src;
+    modal.classList.add('active');
+  });
 });
 
+// Close modal
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+// Click outside modal box closes it
+modal.addEventListener('click', e => {
+  if (!e.target.closest('.modal_box')) {
+    modal.classList.remove('active');
+  }
+});
+
+// Navigation arrows
+leftArrow.addEventListener('click', e => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
+  modalImage.src = pictures[currentIndex].querySelector('img').src;
+});
+
+rightArrow.addEventListener('click', e => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % pictures.length;
+  modalImage.src = pictures[currentIndex].querySelector('img').src;
+});
+
+});
