@@ -199,7 +199,7 @@ img {
 
 .forsideGlobalNavigation a {
   text-decoration: none;
-  color: var(--hvid);
+  color: var(--sort);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
 }
@@ -256,9 +256,18 @@ ul.dropdown li a {
   color: var(--hvid);
 }
 
+.sort {
+  color: var(--sort);
+}
+
+.globalNavigation .sort i{
+  color: var(--sort);
+}
+
 .burger-btn i {
   color: var(--hvid);
 }
+
 
 .galleri {
   position: relative;
@@ -382,6 +391,7 @@ color: var(--sort);
   background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 .z-layout img {
   flex: 1;
@@ -389,6 +399,14 @@ color: var(--sort);
   height: 467px;
   object-fit: cover;
 }
+
+.z-layout img {
+  flex: 1;
+  max-width: 100%;
+  height: 467px;
+}
+
+
 
 .z-layout div h2 {
   color: var(--hvid);
@@ -417,7 +435,7 @@ color: var(--sort);
 
 .cardWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: var(--gutterGap);
 }
 
@@ -685,7 +703,6 @@ Media querries
 
   .z-layoutForside div {
     height: 250px;
-    flex: none;
   }
 
   .z-layout div h2 {
@@ -791,7 +808,7 @@ Media querries
 
   /* Hero sektion */
 
-  header {
+  .forsideHeader {
     background-image: url("../images/mobile/brudepar-11-ved-lokation-vandret-mobile.jpg");
   }
 
@@ -836,6 +853,7 @@ h1 {
 .z-layout{
     gap: var(--gutterGapMobile);
     margin-bottom: var(--mobileSectionSpacer);
+    padding-top: var(--mobileSectionSpacer);
 }
 
 /* Anmeldelser */
