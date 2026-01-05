@@ -316,7 +316,8 @@ color: var(--sort);
 }
 
 .containerHeroImage a,
-.cardWrapper article .cardButton {
+.cardWrapper article .cardButton,
+.moedeSektion a {
   display: grid;
   place-items: center;
   color: white;
@@ -564,7 +565,7 @@ color: var(--sort);
 
 /* Arrows */
 .review-slider button.prev,
-.review-slider button.next {
+.review-slider button.next, .swiper-button-prev {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1701,4 +1702,35 @@ background:
   font-size: var(--mobileBroedtekst);
   margin-bottom: 5px;
 }
+}
+.moedeSektion{
+    margin-bottom: var(--desktopSectionSpacer);
+position: relative;
+
+}
+
+.moedeSektion p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.moedeSektion a {
+margin: 0 auto;
+}
+
+.moedeSektion a:hover ~ img {
+  opacity: 1;
+
+}
+
+.moedeSektion img {
+  position: absolute;
+  bottom: -120px;
+  left: 32%;
+  width: 360px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.2s ease-in;
 }
