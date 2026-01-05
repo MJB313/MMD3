@@ -1358,8 +1358,8 @@ h1 {
 }
 
 .tidslinjeTekstBilledeWrapper {
-  grid-auto-rows: 200px;
-  row-gap: clamp(2rem, 5.5vw, 5rem);
+  grid-auto-rows: 250px;
+  row-gap: clamp(1rem, 1vw, 5rem);
   padding-top: 7rem;
 }
 
@@ -1368,7 +1368,7 @@ h1 {
 }
 
 .tidslinjeTekstBillede img {
-  height: 300px;
+  height: 250px;
 }
 }
 
@@ -1458,6 +1458,20 @@ main .accordion-content p {
 }
 
 
+@media screen and (max-width:440px) {
+
+  .tidslinjeWrapper {
+  grid-template-columns: 20% 1fr;
+}
+.tidslinjeTekstBilledeWrapper {
+  padding-top: 20rem;
+}
+
+.tidslinjeTekstBillede {
+  margin-bottom: 1rem;
+}
+
+}
 @media screen and (max-width:400px) {
 
   .tidslinjeWrapper {
@@ -1491,7 +1505,7 @@ main .accordion-content p {
 
 .accordionWrapper {
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 0 auto var(--desktopSectionSpacer) auto;
   padding-inline: var(--gutterGapMobile);
 }
 
