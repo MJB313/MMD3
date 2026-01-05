@@ -5,8 +5,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
 
 /* Delaney */
-@import url("https://use.typekit.net/ycj8qox.css");
 
+@import url("https://use.typekit.net/ycj8qox.css");
 /* VARIABLES */
 /* ___________________________________ */
 
@@ -124,12 +124,14 @@ span {
 h1 {
   font-size: var(--desktopH1);
   margin-bottom: var(--desktopBroedtekstBilledeOverskriftSpacer);
+  font-weight: 600;
 }
 
 h2 {
   margin-bottom: var(--gutterGap);
   font-size: var(--desktopH2);
   color: var(--sort);
+  font-weight: 600;
 }
 
 .hvidH2 {
@@ -148,7 +150,7 @@ img {
   max-width: 100%;
 }
 
-.globalNavigation {
+.globalNavigation, .forsideGlobalNavigation {
   position: fixed;
   top: 0;
   left: 0;
@@ -161,6 +163,7 @@ img {
   z-index: 9999;
   transition: 0.3s ease-in-out;
 }
+
 
 .globalNavigation a {
   text-decoration: none;
@@ -199,14 +202,11 @@ img {
 
 .forsideGlobalNavigation a {
   text-decoration: none;
-  color: var(--sort);
+  color: var(--hvid);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
 }
 
-.globalNavigation a{
-  color: var(--sort);
-}
 
 .globalNavigation a:hover {
   text-decoration: underline;
@@ -296,6 +296,8 @@ span {
   background-position: center 15%;
   height: 90vh;
 }
+
+
 .forsideHeader li a{
   color: var(--hvid);
 }
@@ -341,11 +343,13 @@ color: var(--sort);
 .containerHeroImage a,
 .cardWrapper article .cardButton,
 .moedeSektion a {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   color: white;
   width: 215px;
-  height: 50px;
+  min-height: 50px;
   border-radius: var(--borderRadius);
   background-color: var(--groen);
   text-decoration: none;
@@ -354,7 +358,9 @@ color: var(--sort);
   font-size: var(--heroCTA);
   text-transform: uppercase;
   font-weight: 600;
+  padding: 0 1rem;
 }
+
 .containerHeroImage a:nth-last-child(1) {
   background-color: var(--brun);
 }
@@ -368,8 +374,7 @@ color: var(--sort);
   gap: var(--tekstBilledeSpacer);
   max-width: 1440px;
   margin: 0 auto var(--desktopSectionSpacer) auto;
-  padding: var(--desktopSectionSpacer) var(--gutterGapMobile) 0
-    var(--gutterGapMobile);
+  padding: var(--desktopSectionSpacer) var(--gutterGapMobile) 0 var(--gutterGapMobile);
 }
 
 .z-layout article {
@@ -380,32 +385,18 @@ color: var(--sort);
   flex: 1;
   width: 100%;
   height: 467px;
-  /* background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg"); */
-  background-size: cover;
-  background-position: center;
-}
-.z-layout img {
-  flex: 1;
-  width: 100%;
-  height: 467px;
+  /* Billede genereret med AI */
   background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
+
 .z-layout img {
   flex: 1;
   width: 100%;
   height: 467px;
   object-fit: cover;
 }
-
-.z-layout img {
-  flex: 1;
-  max-width: 100%;
-  height: 467px;
-}
-
 
 
 .z-layout div h2 {
@@ -479,7 +470,6 @@ color: var(--sort);
   border: none;
   cursor: pointer;
   text-transform: none;
-    padding-top: 0.5rem;
 }
 
 
@@ -545,7 +535,7 @@ color: var(--sort);
   align-items: center;
   width: 100%;       /* full width */
   position: absolute; /* stack on top of each other */
-  top: 20%;
+  top: 25%;
   left: 0;
   padding-inline: 3rem;
   transition: transform 0.5s ease-in-out;
@@ -691,19 +681,14 @@ Media querries
 }
 
 @media screen and (max-width: 1200px) {
+
+
+
   .navLeft,
   .navRight {
     gap: clamp(0.2rem, 2vw, 18rem);
   }
 
-  .z-layout {
-    gap: var(--gutterGap);
-    flex-direction: column-reverse;
-  }
-
-  .z-layoutForside div {
-    height: 250px;
-  }
 
   .z-layout div h2 {
     font-size: var(--mobileH2);
@@ -734,12 +719,24 @@ Media querries
 }
 
 @media (min-width: 1000px) {
+
   .globalNavigation li:hover > ul.dropdown {
     display: flex;
   }
 }
 
 @media (max-width: 1000px) {
+
+  .z-layout {
+    gap: var(--gutterGap);
+    flex-direction: column-reverse;
+  }
+
+  .z-layout div {
+    flex:none;
+    height: 350px;
+  }
+
   .navLogo img {
     position: static;
     transform: translateX(0);
@@ -792,7 +789,7 @@ Media querries
     padding: 0;
   }
 
-  .globalNavigation li {
+  .globalNavigation li, .forsideGlobalNavigation li {
     padding: 1rem;
   }
 
@@ -802,8 +799,13 @@ Media querries
     box-shadow: none;
   }
 
-  .globalNavigation a {
+  .globalNavigation a, .forsideGlobalNavigation li a {
     color: var(--sort);
+  }
+
+  .forsideGlobalNavigation {
+    padding: 0 1rem;
+    height: 150px;
   }
 
   /* Hero sektion */
@@ -856,6 +858,12 @@ h1 {
     padding-top: var(--mobileSectionSpacer);
 }
 
+.containerHeroImage a,
+.cardWrapper article .cardButton,
+.moedeSektion a {
+  font-size: var(--mobileCardCTA);
+}
+
 /* Anmeldelser */
 
   .review-text {
@@ -894,6 +902,7 @@ h1 {
 
   .footer-inner {
     grid-template-columns: 1fr; /* single column */
+    padding-inline: 1rem;
   }
 
 

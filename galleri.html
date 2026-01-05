@@ -17,8 +17,9 @@
     <meta name="description" content="" />
   </head>
   <body>
-    <header>
+ <header class="normalHeader">
       <nav class="globalNavigation">
+        <!-- Logo (left) -->
         <a href="index.html" class="navLogo">
           <img
             src="./assets/images/dan-mortensen-logo-sort.png"
@@ -26,30 +27,32 @@
           />
         </a>
 
+        <!-- Desktop / Mobile nav ULs -->
         <div class="navLinks">
           <ul class="navLeft">
             <li><a href="./index.html">Forside</a></li>
             <li class="galleri">
-              <a href="#">Galleri <span>▼</span></a>
+              <a href="galleri.html">Galleri <span>▼</span></a>
               <ul class="dropdown">
-                <li><a href="#">Bryllupsforberedelse</a></li>
-                <li><a href="#">Vielse</a></li>
-                <li><a href="#">Bryllupsportrætter</a></li>
-                <li><a href="#">Bryllupsfest</a></li>
+                <li><a href="bryllupsforberedelse.html">Bryllupsforberedelse</a></li>
+                <li><a href="viesle.html">Vielse</a></li>
+                <li><a href="bryllupsportraetter.html">Bryllupsportrætter</a></li>
+                <li><a href="bryllupsfest.html">Bryllupsfest</a></li>
               </ul>
             </li>
-            <li><a href="#">Om mig</a></li>
+            <li><a href="om-mig.html">Om mig</a></li>
           </ul>
 
           <ul class="navRight">
-            <li><a href="#">Priser</a></li>
-            <li><a href="#">Godt at vide</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="priser.html">Priser</a></li>
+            <li><a href="godt-at-vide.html">Godt at vide</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </div>
 
+        <!-- Burger (right) -->
         <div class="nav_menu_mobile_wrapper">
-          <button class="burger-btn sort">
+          <button class="burger-btn">
             <i class="fa-solid fa-bars"></i>
             menu
           </button>
@@ -86,7 +89,7 @@
                 <p>
                   Galleriet viser bryllupsforberedelserne hos både bruden og gommen. Her finder du billeder...
                 </p>
-                <button>Se forberedelser</button>
+                <p class="cardButton">Se forberedelser</p>
               </article>
             </a>
             <a href="vielse.html">
@@ -98,7 +101,7 @@
                 />
                 <h3>Vielse</h3>
                 <p>Vielsen er brylluppets mest betydningsfulde øjeblik. Et øjeblik fyldt med nærvær, følelser...</p>
-                <button>Se vielse</button>
+                <p class="cardButton">Se vielse</p>
               </article>
             </a>
             <a href="bryllupsportraetter.html">
@@ -109,7 +112,7 @@
                 />
                 <h3>Bryllupsportrætter</h3>
                 <p>Bryllupsportrætterne er de tidløse billeder af jer sammen. Et roligt øjeblik, hvor kærligheden...</p>
-                <button>Se portrætter</button>
+                <p class="cardButton">Se portrætter</p>
               </article>
             </a>
             <a href="bryllupsfest.html">
@@ -120,7 +123,7 @@
                 />
                 <h3>Bryllupsfest</h3>
                 <p>Bryllupsfesten er dagen, hvor glæden tager over. Et øjeblik fyldt med latter, dans...</p>
-                <button>Se festen</button>
+                <p class="cardButton">Se festen</p>
               </article>
             </a>
           </div>

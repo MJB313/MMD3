@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.classList.toggle("scrolled", current > 600);
 
     // Skjul navigation når man scroller ned
-    if (current > lastScrollY && current > 150) {
+    if (current > lastScrollY && current > 250) {
       nav.classList.add("hide");
     } else {
       nav.classList.remove("hide");
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       nav.classList.remove("hide");
-    }, 150);
+    }, 250);
 
     lastScrollY = current;
   });
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     normalNav.classList.toggle("scrolled", current > 100);
 
     // Skjul menu når man scroller ned
-    if (current > normalNavLastScrollY && current > 50) {
+    if (current > normalNavLastScrollY && current > 250) {
       normalNav.classList.add("hide");
     } else {
       normalNav.classList.remove("hide");
@@ -90,10 +90,87 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(normalNavScrollTimeout);
     normalNavScrollTimeout = setTimeout(() => {
       normalNav.classList.remove("hide");
-    }, 150);
+    }, 250);
 
     normalNavLastScrollY = current;
   });
+
+
+
+  /* ================= SLIDER ================= */
+const reviews = document.querySelectorAll(".review");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+if (reviews.length && prevBtn && nextBtn) {
+  let current = 0;
+  let animating = false; // prevent double-clicks during animation
+
+  // Initialize: first review visible, others off-screen
+  reviews.forEach((review, i) => {
+    review.style.transition = "transform 0.5s ease";
+    review.style.transform = i === current ? "translateX(0)" : "translateX(100%)";
+    review.style.zIndex = i === current ? "2" : "1";
+    review.style.position = i === current ? "relative" : "absolute";
+  });
+
+  // Hide left arrow initially (can't go left from first)
+  prevBtn.style.display = "none";
+
+  function updateArrows() {
+    prevBtn.style.display = current === 0 ? "none" : "block";
+    nextBtn.style.display = current === reviews.length - 1 ? "none" : "block";
+  }
+
+  function showReview(newIndex, direction) {
+    if (animating || newIndex === current) return;
+    animating = true;
+
+    const currentReview = reviews[current];
+    const nextReview = reviews[newIndex];
+
+    // Position next review off-screen
+    nextReview.style.position = "absolute";
+    nextReview.style.zIndex = "3";
+    nextReview.style.transform =
+      direction === "right" ? "translateX(100%)" : "translateX(-100%)";
+
+    // Trigger animation
+    requestAnimationFrame(() => {
+      currentReview.style.transform =
+        direction === "right" ? "translateX(-100%)" : "translateX(100%)";
+      nextReview.style.transform = "translateX(0)";
+    });
+
+    // After animation, reset positions
+    setTimeout(() => {
+      currentReview.style.position = "absolute";
+      currentReview.style.zIndex = "1";
+
+      nextReview.style.position = "relative"; // active review
+      nextReview.style.zIndex = "2";
+
+      current = newIndex;
+      animating = false;
+
+      updateArrows();
+    }, 500); // match CSS transition duration
+  }
+
+  // Navigation buttons
+  nextBtn.addEventListener("click", () => {
+    if (current < reviews.length - 1) {
+      showReview(current + 1, "right");
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (current > 0) {
+      showReview(current - 1, "left");
+    }
+  });
+}
+
 
   /* ================= ACCORDION / FAQ ================= */
   const { createApp } = Vue;
@@ -160,55 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   }).mount("#app");
 
-  /* ================= SLIDER ================= */
-  const reviews = document.querySelectorAll(".review");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
-
-  if (reviews.length && prevBtn && nextBtn) {
-    let current = 0;
-
-    // Sæt startpositioner for alle reviews
-    reviews.forEach((review, i) => {
-      review.style.transition = "transform 0.5s ease";
-      review.style.transform =
-        i === current ? "translateX(0)" : "translateX(100%)";
-      review.style.zIndex = i === current ? "2" : "1";
-    });
-
-    // Funktion til at vise en review
-    function showReview(newIndex, direction) {
-      if (newIndex === current) return;
-
-      const currentReview = reviews[current];
-      const nextReview = reviews[newIndex];
-
-      nextReview.style.zIndex = "3";
-      nextReview.style.transform =
-        direction === "right" ? "translateX(100%)" : "translateX(-100%)";
-
-      requestAnimationFrame(() => {
-        currentReview.style.transform =
-          direction === "right" ? "translateX(-100%)" : "translateX(100%)";
-        nextReview.style.transform = "translateX(0)";
-      });
-
-      setTimeout(() => {
-        currentReview.style.zIndex = "1";
-        nextReview.style.zIndex = "2";
-      }, 500);
-
-      current = newIndex;
-    }
-
-    // Event listeners for navigation
-    nextBtn.addEventListener("click", () =>
-      showReview((current + 1) % reviews.length, "right")
-    );
-    prevBtn.addEventListener("click", () =>
-      showReview((current - 1 + reviews.length) % reviews.length, "left")
-    );
-  }
 
   /* ================= GALLERY MODALS ================= */
   const pictures = Array.from(
