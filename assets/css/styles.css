@@ -339,6 +339,14 @@ span {
   background-size: cover;
   background-position: center;
 }
+.z-layout img {
+  flex: 1;
+  width: 100%;
+  height: 467px;
+  background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
 .z-layout div h2 {
   color: var(--hvid);
@@ -872,3 +880,606 @@ h1 {
   gap: 1.5rem;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tidslinjeWrapper {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 3rem;
+  padding-inline: var(--gutterGapMobile);
+  margin-bottom: var(--desktopSectionSpacer);
+}
+
+.tidslinjeTekstBilledeWrapper {
+  display: grid;
+  grid-auto-rows: 370px;
+  row-gap: 5rem;
+  padding-top: 10rem;
+}
+
+.tidslinjeTekstBillede {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 3vw, var(--tekstBilledeSpacer));
+  position: relative;
+
+}
+
+/* .tidslinjeTekstBillede::before {
+  content: "\f030";
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  font-size: 5rem;
+  color: var(--sort);
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -8rem;
+  z-index: 10;
+} */
+
+.tidslinjeTekstBillede img {
+  max-height: 370px;
+  height: 370px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+@media screen and (max-width:1200px) {
+  .tidslinjeWrapper {
+  gap: 1rem;
+  grid-template-columns: 10% 1fr;
+}
+
+.tidslinjeTekstBilledeWrapper {
+  grid-auto-rows: 200px;
+  row-gap: clamp(2rem, 5.5vw, 5rem);
+  padding-top: 7rem;
+}
+
+.tidslinjeTekstBillede {
+  gap: var(--mobileBroedtekstBilledeOverskriftSpacer);
+}
+
+.tidslinjeTekstBillede img {
+  height: 200px;
+}
+}
+
+@media screen and (max-width:1000px) {
+
+  .tidslinjeWrapper {
+  gap: 1rem;
+  grid-template-columns: 20% 1fr;
+}
+
+
+.tidslinjeTekstBilledeWrapper {
+  display: block;
+  padding-top: 8rem;
+}
+
+.tidslinjeTekstBillede {
+  gap: var(--mobileBroedtekstBilledeOverskriftSpacer);
+  grid-template-columns: 1fr;
+  margin-bottom: 10rem;
+}
+
+.tidslinjeTekstBillede img {
+  height: 150px;
+}
+}
+
+
+@media screen and (max-width:850px) {
+
+  .tidslinjeWrapper {
+  gap: 1rem;
+  grid-template-columns: 25% 1fr;
+}
+
+
+.tidslinjeTekstBilledeWrapper {
+  display: block;
+  padding-top: 8rem;
+}
+
+.tidslinjeTekstBillede {
+  gap: var(--mobileBroedtekstBilledeOverskriftSpacer);
+  grid-template-columns: 1fr;
+  margin-bottom: 9rem;
+}
+
+.tidslinjeTekstBillede img {
+  height: 150px;
+}
+}
+
+
+@media screen and (max-width:700px) {
+
+  .tidslinjeWrapper {
+  gap: 1rem;
+  grid-template-columns: 20% 1fr;
+}
+.tidslinjeTekstBilledeWrapper {
+  padding-top: 16rem;
+}
+
+.tidslinjeTekstBillede {
+  margin-bottom: 20rem;
+}
+
+.tidslinjeTekstBillede img {
+  height: 150px;
+}
+}
+
+
+@media screen and (max-width:400px) {
+
+  .tidslinjeWrapper {
+  grid-template-columns: 20% 1fr;
+}
+.tidslinjeTekstBilledeWrapper {
+  padding-top: 10rem;
+}
+
+.tidslinjeTekstBillede {
+  margin-bottom: 10rem;
+}
+
+}
+
+@media screen and (max-width:370px) {
+
+.tidslinjeTekstBilledeWrapper {
+  padding-top: 10rem;
+}
+
+.tidslinjeTekstBillede {
+  margin-bottom: 5rem;
+}
+}
+
+
