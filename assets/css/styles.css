@@ -136,6 +136,10 @@ h2 {
   color: var(--hvid);
 }
 
+.centreretH2{
+  text-align: center;
+}
+
 p {
   font-size: var(--desktopBroedtekst);
 }
@@ -198,6 +202,10 @@ img {
   color: var(--hvid);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
+}
+
+.globalNavigation a{
+  color: var(--sort);
 }
 
 .globalNavigation a:hover {
@@ -274,11 +282,17 @@ span {
 /* Hero section */
 
 .forsideHeader {
-  background-image: url("../images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.jpg");
+  background-image: url("../images/bryllupsportrætter/brudepar-11-ved-lokation-vandret.avif");
   background-size: cover;
   background-position: center 15%;
   height: 90vh;
 }
+.forsideHeader li a{
+  color: var(--hvid);
+}
+
+
+
 .normalHeader {
 height: 175px;
 color: var(--sort);
@@ -369,6 +383,12 @@ color: var(--sort);
   background-size: cover;
   background-position: center;
 }
+.z-layout img {
+  flex: 1;
+  width: 100%;
+  height: 467px;
+  object-fit: cover;
+}
 
 .z-layout div h2 {
   color: var(--hvid);
@@ -457,7 +477,7 @@ color: var(--sort);
   margin-bottom: var(--desktopSectionSpacer);
 }
 
-.gallery img {
+.gallery img, .imageWrapper img{
   max-width: 100%;
   width: 100%;
   height: 300px;
@@ -1734,3 +1754,113 @@ margin: 0 auto;
   opacity: 0;
   transition: 0.2s ease-in;
 }
+/* Image galler */
+
+.galleriSection h2{
+  text-align: center;
+}
+
+.imageWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
+  gap: var(--galleriSpacer); 
+  margin-bottom: var(--desktopSectionSpacer);
+}
+
+.imageWrapper img{
+  height: 467px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  display: grid;
+  gap: var(--galleriSpacer);
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  width: 100%;
+  margin-bottom: var(--desktopSectionSpacer);
+}
+
+.gallery img {
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.galleri_billede_modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.galleri_billede_modal.active {
+  display: flex;
+}
+
+.modal_box {
+  position: relative;
+  max-width: 60%;
+  width: 100%;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.modal_box img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.galleri_billede_modal {
+  z-index: 9999;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.4rem;
+}
+
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.modal-prev {
+  left: 0.5rem;
+}
+
+.modal-next {
+  right: 0.5rem;
+}
+
+.modal-prev:focus,
+.modal-next:focus {
+  outline: none;
+}
+
