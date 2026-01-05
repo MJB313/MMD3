@@ -402,6 +402,8 @@ color: var(--sort);
 }
 
 
+
+
 .z-layout div h2 {
   color: var(--hvid);
   text-align: center;
@@ -729,17 +731,7 @@ Media querries
 
   /* Only show dropdown on hover for desktop screens */
 @media (min-width: 1001px) {
-  .galleri .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    /* add background, shadow etc as needed */
-  }
 
-  .galleri:hover .dropdown {
-    display: block;
-  }
 }
 
 }
@@ -755,6 +747,10 @@ Media querries
   .z-layout div {
     flex:none;
     height: 350px;
+  }
+
+  .reverseImage img {
+    grid-row: 2;
   }
 
   .navLogo img {
@@ -894,8 +890,8 @@ h1 {
   .reviews h2 {
     font-size: 2rem;
   } 
-
 }
+
 
 @media screen and (max-width: 650px) {
   .globalNavigation {
