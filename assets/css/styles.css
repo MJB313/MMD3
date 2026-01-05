@@ -920,8 +920,13 @@ h1 {
   margin-bottom: var(--mobileSectionSpacer);
 }
 
+  body .imageWrapper {
+    grid-template-columns: 1fr; 
+  }
+
+
   .footer-inner {
-    grid-template-columns: 1fr; /* single column */
+    grid-template-columns: 1fr; 
     padding-inline: 1rem;
   }
 
@@ -1851,13 +1856,6 @@ margin: 0 auto;
   cursor: pointer;
 }
 
-.imageWrapper {
-  display: grid;
-  gap: var(--galleriSpacer);
-  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
-  width: 100%;
-  margin-bottom: var(--desktopSectionSpacer);
-}
 
 .gallery img {
   max-width: 100%;
