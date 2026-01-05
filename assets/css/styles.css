@@ -212,6 +212,12 @@ img {
   text-decoration: underline;
 }
 
+.globalNavigation .burger-btn {
+  color: var(--sort);
+}
+.globalNavigation .burger-btn i {
+  color: var(--sort);
+}
 
 ul.dropdown {
   display: none;
@@ -278,7 +284,7 @@ span {
 }
 
 .globalNavigation.scrolled {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -370,19 +376,17 @@ color: var(--sort);
 }
 
 .z-layout {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: var(--tekstBilledeSpacer);
   max-width: 1440px;
   margin: 0 auto var(--desktopSectionSpacer) auto;
   padding: var(--desktopSectionSpacer) var(--gutterGapMobile) 0 var(--gutterGapMobile);
 }
 
-.z-layout article {
-  flex: 1;
-}
+
 
 .z-layout div {
-  flex: 1;
   width: 100%;
   height: 467px;
   /* Billede genereret med AI */
@@ -392,7 +396,6 @@ color: var(--sort);
 }
 
 .z-layout img {
-  flex: 1;
   width: 100%;
   height: 467px;
   object-fit: cover;
@@ -746,6 +749,7 @@ Media querries
   .z-layout {
     gap: var(--gutterGap);
     flex-direction: column-reverse;
+    grid-template-columns: 1fr;
   }
 
   .z-layout div {
