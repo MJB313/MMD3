@@ -536,7 +536,7 @@ span {
 
 /* Arrows */
 .review-slider button.prev,
-.review-slider button.next {
+.review-slider button.next, .swiper-button-prev {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
