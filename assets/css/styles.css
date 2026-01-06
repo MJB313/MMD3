@@ -182,7 +182,7 @@ img {
   font-size: var(--desktopNav);
 }
 
-.globalNavigation.hide {
+.globalNavigation.hide, .forsideGlobalNavigation.hide {
   transform: translateY(-100%);
 }
 
@@ -294,12 +294,12 @@ span {
 }
 
 .globalNavigation.scrolled {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .forsideGlobalNavigation.scrolled {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -316,6 +316,7 @@ span {
 
 .forsideHeader li a{
   color: var(--hvid);
+  font-weight: 600;
 }
 
 
@@ -519,6 +520,7 @@ color: var(--sort);
   height: 300px;
   object-fit: cover;
   display: block;
+  cursor: pointer;
 }
 
 
@@ -526,7 +528,7 @@ color: var(--sort);
 /* Anmeldelser - DELVIST LAVET MED AI*/
 
 .reviews {
-  background-image: url('../images/Testimonials-baggrund.jpg'); /* your background */
+  background-image: url('../images/Testimonials-baggrund.jpg');
   background-size: cover;
   background-position: center;
   padding: 6rem 1rem;
@@ -538,9 +540,9 @@ color: var(--sort);
 }
 
 .anmeldelserOverskrift {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: var(--desktopBroedtekstBilledeOverskriftSpacer);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--desktopBroedtekstBilledeOverskriftSpacer);
 }
 
 .reviews h2 {
@@ -555,37 +557,29 @@ color: var(--sort);
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.3);
   padding: var(--desktopBroedtekstBilledeOverskriftSpacer);
+  min-height: 600px;
 }
 
 .review {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;       /* full width */
-  position: absolute; /* stack on top of each other */
-  top: 25%;
+  justify-content: center;
+  width: 100%;
+  position: absolute; /* Altid absolute */
+  top: 120px;
   left: 0;
+  right: 0;
   padding-inline: 3rem;
   transition: transform 0.5s ease-in-out;
-  transform: translateX(100%); /* start off-screen */
+  transform: translateX(100%);
+  opacity: 1;
 }
 
-
 .review.active {
-  transform: translateX(0);
-  position: relative;
   z-index: 2;
 }
 
-.review.next {
-  transform: translateX(100%);
-  z-index: 1;
-}
-
-.review.prev {
-  transform: translateX(-100%);
-  z-index: 1;
-}
 
 .reviewer-img {
   width: 120px;
@@ -612,16 +606,18 @@ color: var(--sort);
 .review-text {
   font-size: 1.375rem;
   margin: 1rem 0;
+  max-width: 600px; /* Begræns tekstens bredde */
 }
 
 .review-stars {
   font-size: 1.25rem;
   color: var(--brun);
+  margin-top: 0.5rem; /* Lidt spacing */
 }
 
 /* Arrows */
 .review-slider button.prev,
-.review-slider button.next, .swiper-button-prev {
+.review-slider button.next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -635,11 +631,11 @@ color: var(--sort);
 }
 
 .review-slider button.prev { 
-    left: 10px; 
+  left: 10px; 
 }
 
 .review-slider button.next { 
-    right: 10px; 
+  right: 10px; 
 }
 
 .review-slider button:focus {
@@ -775,7 +771,11 @@ Media querries
   .navLogo img {
     position: static;
     transform: translateX(0);
-    height: 120px;
+    height: 100px;
+  }
+
+  .fa-bars {
+    font-size: 3rem;
   }
 
   .nav_menu_mobile_wrapper {
@@ -800,7 +800,7 @@ Media querries
   .navLinks {
     flex-direction: column;
     position: fixed;
-    top: 180px;
+    top: 120px;
     right: 0;
     width: 60%;
     background: var(--hvid);
@@ -838,9 +838,13 @@ Media querries
     color: var(--sort);
   }
 
-  .forsideGlobalNavigation {
+  .forsideGlobalNavigation, .globalNavigation {
     padding: 0 1rem;
-    height: 150px;
+    height: 120px;
+  }
+
+  .normalHeader {
+    height: 120px;
   }
 
   /* Hero sektion */
@@ -938,7 +942,7 @@ body .mailOgTelefonFelt {
 
 @media screen and (max-width: 650px) {
   .globalNavigation {
-    padding-inline: 1rem;
+    padding: 0 1rem;
   }
 
   .forsidePadding {
@@ -1851,25 +1855,35 @@ background:
 
 @media screen and (max-width: 650px) {
 
+  .prisSection {
+    padding-top: var(--mobileSectionSpacer);
+  }
+
   .prisWrapper {
     grid-template-columns: 1fr;
     max-width: 100%;
+    width: 100%;
   }
-
 
   .prisWrapper article {
     height: auto;
+    min-width: 0; /* Vigtig for at forhindre overflow */
+    width: 100%; /* Sikrer den fylder sin container */
   }
 
   .prisWrapper article h3 {
-  font-size: var(--mobileH3);
-  margin-bottom: var(--mobileBroedtekstBilledeOverskriftSpacer);
-}
+    font-size: var(--mobileH3);
+    margin-bottom: var(--mobileBroedtekstBilledeOverskriftSpacer);
+  }
 
-.prisWrapper ul li {
-  font-size: var(--mobileBroedtekst);
-  margin-bottom: 5px;
-}
+  .prisWrapper ul li {
+    font-size: var(--mobileBroedtekst);
+    margin-bottom: 5px;
+  }
+
+    .moedeSektion img {
+    display: none;
+  }
 }
 .moedeSektion{
     margin-bottom: var(--desktopSectionSpacer);
@@ -1896,7 +1910,8 @@ margin: 0 auto;
 .moedeSektion img {
   position: absolute;
   bottom: -120px;
-  left: 32%;
+  left: 50%;
+  transform: translateX(-90%);
   width: 360px;
   pointer-events: none;
   opacity: 0;
@@ -1916,7 +1931,8 @@ margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
   gap: var(--galleriSpacer); 
-  margin-bottom: var(--desktopSectionSpacer);
+  max-width: 1920px;
+  margin: 0 auto var(--desktopSectionSpacer) auto;
 }
 
 .imageWrapper img{

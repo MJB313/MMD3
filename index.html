@@ -16,13 +16,12 @@
     <script src="./assets/js/app.js" defer></script>
     <meta
       name="description"
-      content="Se mit galleri med skønne billeder fra bryllupsforberedelse, vielse, bryllupsportrætter og bryllupsfest, og oplev smukke øjeblikke fanget naturligt i øjeblikket."
+      content="Dan Mortensen er bryllupsfotograf i Aalborg, Nordjylland og Midtjylland. Han skaber stemningsfulde bryllupsbilleder med ægte øjeblikke, naturligt lys og minder valgt med hjertet."
     />
   </head>
   <body>
     <header class="forsideHeader">
       <nav class="forsideGlobalNavigation">
-
         <a href="index.html" class="navLogo">
           <!-- Alle billeder er taget fra DM's website, hele vejen ned igennem website, pånær, hvis vi linker til andet. -->
           <img
@@ -37,6 +36,9 @@
             <li class="galleri">
               <a href="galleri.html">Galleri <span>▼</span></a>
               <ul class="dropdown">
+                <li>
+                  <a href="galleri.html">Galleri oversigt</a>
+                </li>
                 <li>
                   <a href="bryllupsforberedelse.html">Bryllupsforberedelse</a>
                 </li>
@@ -59,6 +61,7 @@
 
         <div class="nav_menu_mobile_wrapper">
           <button class="burger-btn">
+            <!-- Brugt på alle sider, linker kun på forsiden: https://fontawesome.com/icons/bars?s=solid -->
             <i class="fa-solid fa-bars"></i>
             menu
           </button>
@@ -144,7 +147,7 @@
       </section>
 
       <section class="gallery">
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="./assets/images/mobile/bryllupsplanlaegning-mobile.jpg"
             media="(max-width: 650px)"
@@ -156,7 +159,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="./assets/images/mobile/brud-10-kastet-i-luften-mobile.jpg"
             media="(max-width: 650px)"
@@ -168,7 +171,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="
               ./assets/images/mobile/brudepar-3-der-giver-hinanden-kage-mobile.jpg
@@ -182,7 +185,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="
               ./assets/images/mobile/bord-og-stole-til-bryllupsfest-mobile.jpg
@@ -196,7 +199,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="
               ./assets/images/mobile/brudgom-17-med-best-mans-der-kysser-ham-paa-kinden-mobile.jpg
@@ -210,7 +213,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="./assets/images/mobile/brud-3-og-far-mobile.jpg"
             media="(max-width: 650px)"
@@ -222,7 +225,7 @@
           />
         </picture>
 
-        <picture>
+        <picture class="galleri_billede_active">
           <source
             srcset="./assets/images/mobile/brudgom-1-og-datter-mobile.jpg"
             media="(max-width: 650px)"
@@ -233,7 +236,8 @@
             loading="lazy"
           />
         </picture>
-        <picture>
+
+        <picture class="galleri_billede_active">
           <source
             srcset="
               ./assets/images/mobile/brudepar-6-i-skoven-bryllupsportraet-jpg3-mobile.jpg
@@ -248,10 +252,23 @@
         </picture>
       </section>
 
+      <div class="galleri_billede_modal" id="globalModal">
+        <div class="modal_box">
+          <i class="fas fa-times buttonClose"></i>
+          <button class="modal-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <img id="modalImage" src="" alt="" />
+          <button class="modal-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
       <section class="reviews">
         <div class="review-slider">
           <p class="anmeldelserOverskrift">Anmeldelser</p>
-          <!-- Alt billedmateriale og tekster er taget fra Google reviews -->
+          <!-- Alt billedmateriale og tekster er taget fra Google reviews: https://www.google.com/search?sa=X&sca_esv=9cf56067a199ff72&sxsrf=AE3TifOhYWsVo80tzt0boV-EuunkwSrXCg:1767731401262&q=Fotograf+Dan+Mortensen+Anmeldelser&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDIys7A0NzQ1MrC0NDO0MDQ2NdjAyPiKUcktvyQ_vSgxTcElMU_BN7-oJDWvODVPwTEvNzUnJTWnOLVoESsRigDuH2R7ZQAAAA&rldimm=12268971520996181350&tbm=lcl&hl=da-DK&ved=2ahUKEwix6-vR4PeRAxVGXUEAHfuNLwMQ9fQKegQIYBAG&biw=2560&bih=1271&dpr=1#lkt=LocalPoiReviews -->
           <div class="review active">
             <img
               src="./assets/images/Testimonials/nikki.png"
@@ -269,6 +286,7 @@
               et udfordrende vejr!”
             </p>
             <div class="review-stars">
+              <!-- Stjerner brugt på alle reviews: https://fontawesome.com/icons/star?s=solid -->
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i>
@@ -334,7 +352,6 @@
               anbefale ham til enhver der har brug for en fotograf!”
             </p>
             <div class="review-stars">
-              <!-- https://fontawesome.com/icons/star?s=solid -->
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
               ><i class="fa-solid fa-star"></i>
@@ -342,9 +359,9 @@
           </div>
 
           <!-- Arrows -->
-          <!-- https://fontawesome.com/icons/chevron-left?s=solid -->
+          <!-- Venstre pil ikon, brugt på alle typer slidere: https://fontawesome.com/icons/chevron-left?s=solid -->
           <button class="prev"><i class="fas fa-chevron-left"></i></button>
-          <!-- https://fontawesome.com/icons/chevron-right?s=solid -->
+          <!-- Højre pil ikon, brugt på alle typer slidere: https://fontawesome.com/icons/chevron-right?s=solid -->
           <button class="next"><i class="fas fa-chevron-right"></i></button>
         </div>
       </section>
@@ -353,11 +370,13 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-item">
+          <!-- Kamera ikon, brugt på footer på alle sider: https://fontawesome.com/icons/camera?s=solid -->
           <i class="fa-solid fa-camera"></i>
           <p>Bryllupsfotograf</p>
         </div>
 
         <div class="footer-item">
+          <!-- E-mail ikon, brugt på footer på alle sider: https://fontawesome.com/icons/envelope?s=solid -->
           <i class="fa-regular fa-envelope"></i>
           <a href="mailto:hej@danmortensen.com">hej@danmortensen.com</a>
         </div>
@@ -373,6 +392,7 @@
         </div>
 
         <div class="footer-item">
+          <!-- Stjerne ikon, brugt på footer på alle sider: https://fontawesome.com/icons/star?s=solid -->
           <i class="fa-solid fa-star"></i>
           <!-- Dan Mortensens Google Reviews -->
           <a
@@ -383,6 +403,7 @@
         </div>
 
         <div class="footer-item">
+          <!-- Halvt skjold ikon, brugt på footer på alle sider: https://fontawesome.com/icons/shield-halved?s=solid -->
           <i class="fa-solid fa-shield-halved"></i>
           <!-- Dan Mortensens egen GDPR -->
           <a href="https://www.danmortensen.com/gdpr" target="_blank"

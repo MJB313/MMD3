@@ -53,119 +53,153 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= NAVIGATION SCROLL BEHAVIOR ================= */
   const nav = document.querySelector(".forsideGlobalNavigation");
-  let lastScrollY = window.scrollY;
-  let scrollTimeout;
+  
+  if (nav) {
+    let lastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    const current = window.scrollY;
-    nav.classList.toggle("scrolled", current > 600);
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
 
-    if (current > lastScrollY && current > 250) nav.classList.add("hide");
-    else nav.classList.remove("hide");
+      // Tilføj scrolled class efter 600px
+      if (currentScrollY > 600) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
 
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => nav.classList.remove("hide"), 250);
+      // Skjul når man scroller ned, vis når man scroller op
+      if (currentScrollY > lastScrollY && currentScrollY > 250) {
+        // Scroller ned
+        nav.classList.add("hide");
+      } else if (currentScrollY < lastScrollY) {
+        // Scroller op
+        nav.classList.remove("hide");
+      }
 
-    lastScrollY = current;
-  });
+      lastScrollY = currentScrollY;
+    });
+  }
 
   /* ================= ANDEN NAVIGATION SCROLL ================= */
   const normalNav = document.querySelector(".globalNavigation");
-  let normalNavLastScrollY = window.scrollY;
-  let normalNavScrollTimeout;
+  
+  if (normalNav) {
+    let normalNavLastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    const current = window.scrollY;
-    normalNav.classList.toggle("scrolled", current > 100);
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
 
-    if (current > normalNavLastScrollY && current > 250) normalNav.classList.add("hide");
-    else normalNav.classList.remove("hide");
+      // Tilføj scrolled class efter 100px
+      if (currentScrollY > 100) {
+        normalNav.classList.add("scrolled");
+      } else {
+        normalNav.classList.remove("scrolled");
+      }
 
-    clearTimeout(normalNavScrollTimeout);
-    normalNavScrollTimeout = setTimeout(() => normalNav.classList.remove("hide"), 250);
+      // Skjul når man scroller ned, vis når man scroller op
+      if (currentScrollY > normalNavLastScrollY && currentScrollY > 250) {
+        // Scroller ned
+        normalNav.classList.add("hide");
+      } else if (currentScrollY < normalNavLastScrollY) {
+        // Scroller op
+        normalNav.classList.remove("hide");
+      }
 
-    normalNavLastScrollY = current;
-  });
+      normalNavLastScrollY = currentScrollY;
+    });
+  }
 
   /* ================= To top ================= */
-const toTop = document.querySelector(".back-to-top");
+  const toTop = document.querySelector(".back-to-top");
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  if (scrollY > 800) {
-    toTop.classList.add("visible");
-  } else {
-    toTop.classList.remove("visible");
-  }
-});
-
-  /* ================= SLIDER ================= */
-  const reviews = document.querySelectorAll(".review");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
-
-  if (reviews.length && prevBtn && nextBtn) {
-    let current = 0;
-    let animating = false;
-
-    reviews.forEach((review, i) => {
-      review.style.transition = "transform 0.5s ease";
-      review.style.transform = i === current ? "translateX(0)" : "translateX(100%)";
-      review.style.zIndex = i === current ? "2" : "1";
-      review.style.position = i === current ? "relative" : "absolute";
-    });
-
-    prevBtn.style.display = "none";
-
-    function updateArrows() {
-      prevBtn.style.display = current === 0 ? "none" : "block";
-      nextBtn.style.display = current === reviews.length - 1 ? "none" : "block";
-    }
-
-    function showReview(newIndex, direction) {
-      if (animating || newIndex === current) return;
-      animating = true;
-
-      const currentReview = reviews[current];
-      const nextReview = reviews[newIndex];
-
-      nextReview.style.position = "absolute";
-      nextReview.style.zIndex = "3";
-      nextReview.style.transform = direction === "right" ? "translateX(100%)" : "translateX(-100%)";
-
-      requestAnimationFrame(() => {
-        currentReview.style.transform = direction === "right" ? "translateX(-100%)" : "translateX(100%)";
-        nextReview.style.transform = "translateX(0)";
-      });
-
-      setTimeout(() => {
-        currentReview.style.position = "absolute";
-        currentReview.style.zIndex = "1";
-        nextReview.style.position = "relative";
-        nextReview.style.zIndex = "2";
-        current = newIndex;
-        animating = false;
-        updateArrows();
-      }, 500);
-    }
-
-    nextBtn.addEventListener("click", () => {
-      if (current < reviews.length - 1) showReview(current + 1, "right");
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (current > 0) showReview(current - 1, "left");
+  if (toTop) {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 800) {
+        toTop.classList.add("visible");
+      } else {
+        toTop.classList.remove("visible");
+      }
     });
   }
 
-  /* ================= GALLERY MODALS ================= */
-  const pictures = Array.from(document.querySelectorAll('.galleri_billede_active'));
-  const modal = document.getElementById('globalModal');
-  const modalImage = document.getElementById('modalImage');
-  const closeBtn = modal.querySelector('.buttonClose');
-  const leftArrow = modal.querySelector('.modal-prev');
-  const rightArrow = modal.querySelector('.modal-next');
+/* ================= SLIDER ================= */
+const reviews = document.querySelectorAll(".review");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
 
+if (reviews.length && prevBtn && nextBtn) {
+  let current = 0;
+  let animating = false;
+
+  // Initialiser alle reviews
+  reviews.forEach((review, i) => {
+    review.style.transition = "transform 0.5s ease-in-out";
+    if (i === current) {
+      review.style.transform = "translateX(0)";
+      review.style.zIndex = "2";
+      review.classList.add("active");
+    } else {
+      review.style.transform = "translateX(100%)";
+      review.style.zIndex = "1";
+      review.classList.remove("active");
+    }
+  });
+
+  prevBtn.style.display = "none";
+
+  function updateArrows() {
+    prevBtn.style.display = current === 0 ? "none" : "block";
+    nextBtn.style.display = current === reviews.length - 1 ? "none" : "block";
+  }
+
+  function showReview(newIndex, direction) {
+    if (animating || newIndex === current) return;
+    animating = true;
+
+    const currentReview = reviews[current];
+    const nextReview = reviews[newIndex];
+
+    // Forbered næste review
+    nextReview.style.zIndex = "3";
+    nextReview.style.transform = direction === "right" ? "translateX(100%)" : "translateX(-100%)";
+    
+    // Start animation
+    requestAnimationFrame(() => {
+      currentReview.style.transform = direction === "right" ? "translateX(-100%)" : "translateX(100%)";
+      nextReview.style.transform = "translateX(0)";
+    });
+
+    // Efter animation er færdig
+    setTimeout(() => {
+      currentReview.style.zIndex = "1";
+      currentReview.classList.remove("active");
+      nextReview.style.zIndex = "2";
+      nextReview.classList.add("active");
+      current = newIndex;
+      animating = false;
+      updateArrows();
+    }, 500);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (current < reviews.length - 1) showReview(current + 1, "right");
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (current > 0) showReview(current - 1, "left");
+  });
+}
+
+/* ================= GALLERY MODALS ================= */
+const pictures = Array.from(document.querySelectorAll('.galleri_billede_active'));
+const modal = document.getElementById('globalModal');
+const modalImage = document.getElementById('modalImage');
+const closeBtn = modal?.querySelector('.buttonClose');
+const leftArrow = modal?.querySelector('.modal-prev');
+const rightArrow = modal?.querySelector('.modal-next');
+
+if (modal && modalImage && closeBtn && leftArrow && rightArrow && pictures.length) {
   let currentIndex = 0;
 
   // Open modal
@@ -179,27 +213,60 @@ window.addEventListener("scroll", () => {
     });
   });
 
+  // Close modal function
+  function closeModal() {
+    modal.classList.remove('active');
+  }
+
+  // Navigate to previous image
+  function showPrevImage() {
+    currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
+    modalImage.src = pictures[currentIndex].querySelector('img').src;
+  }
+
+  // Navigate to next image
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % pictures.length;
+    modalImage.src = pictures[currentIndex].querySelector('img').src;
+  }
+
   // Close modal
-  closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+  closeBtn.addEventListener('click', closeModal);
 
   // Click outside modal box closes it
   modal.addEventListener('click', (e) => {
     if (!e.target.closest('.modal_box')) {
-      modal.classList.remove('active');
+      closeModal();
     }
   });
 
   // Navigation arrows
   leftArrow.addEventListener('click', (e) => {
     e.stopPropagation();
-    currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
-    modalImage.src = pictures[currentIndex].querySelector('img').src;
+    showPrevImage();
   });
 
   rightArrow.addEventListener('click', (e) => {
     e.stopPropagation();
-    currentIndex = (currentIndex + 1) % pictures.length;
-    modalImage.src = pictures[currentIndex].querySelector('img').src;
+    showNextImage();
   });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    // Tjek om modal er åben
+    if (!modal.classList.contains('active')) return;
+
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showPrevImage();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      showNextImage();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal();
+    }
+  });
+}
 
 });
