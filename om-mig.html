@@ -12,53 +12,51 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-        <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <script src="./assets/js/app.js" defer></script>
-    <meta name="description" content="Mød Dan Mortensen, bryllupsfotograf i Aalborg, Nordjylland og Midtjylland. Med erfaring fra 60+ bryllupper fanger han ægte øjeblikke, kærlighed og stemning, og skaber billeder, som bevarer jeres minder for livet." />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new Swiper(".swiper", {
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 1,
+          spaceBetween: 0,
+          initialSlide: 1,
+
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: false,
+          },
+
+          navigation: {
+            nextEl: ".next",
+            prevEl: ".prev",
+            disabledClass: "swiper-button-disabled",
+          },
+
+          breakpoints: {
+            1000: {
+              slidesPerView: 3,
+              centeredSlides: true,
+            },
+          },
+        });
+      });
+    </script>
+    <meta
+      name="description"
+      content="Mød Dan Mortensen, bryllupsfotograf i Aalborg, Nordjylland og Midtjylland. Med erfaring fra 60+ bryllupper fanger han ægte øjeblikke, kærlighed og stemning, og skaber billeder, som bevarer jeres minder for livet."
+    />
   </head>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    new Swiper(".swiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 1,
-      spaceBetween: 0,
-      initialSlide: 1,
-
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 200,
-        modifier: 1,
-        slideShadows: false,
-      },
-
-navigation: {
-  nextEl: ".next",
-  prevEl: ".prev",
-  disabledClass: "swiper-button-disabled",
-},
-
-
-
-      breakpoints: { 
-        1000: { 
-          slidesPerView: 3, 
-          centeredSlides: true, 
-        }
-      }
-    });
-  });
-</script>
-
-
   <body>
     <header class="normalHeader" id="top">
       <nav class="globalNavigation">
@@ -141,43 +139,63 @@ navigation: {
         <article>
           <h2>Erfaring - 60+ bryllupper</h2>
           <p>
-            Jeg har mange års erfaring med at fange de unikke og uforglemmelige øjeblikke fra bryllupsdage. Jeg forstår vigtigheden af at dokumentere jeres historie med omtanke og professionalisme. <br><br>
+            Jeg har mange års erfaring med at fange de unikke og uforglemmelige
+            øjeblikke fra bryllupsdage. Jeg forstår vigtigheden af at
+            dokumentere jeres historie med omtanke og professionalisme.
+            <br /><br />
 
-Jeg arbejder diskret for at sikre, at I kan nyde jeres dag uden forstyrrelser, samtidig med at jeg fanger ægte følelser og stemninger. <br><br>
+            Jeg arbejder diskret for at sikre, at I kan nyde jeres dag uden
+            forstyrrelser, samtidig med at jeg fanger ægte følelser og
+            stemninger. <br /><br />
 
-Min glæde for fotografi og mit engagement i at levere billeder af høj kvalitet betyder, at I kan føle jer trygge ved, at jeres minder bliver foreviget på den bedst mulige måde
+            Min glæde for fotografi og mit engagement i at levere billeder af
+            høj kvalitet betyder, at I kan føle jer trygge ved, at jeres minder
+            bliver foreviget på den bedst mulige måde
           </p>
         </article>
       </section>
 
       <section class="carousel-section">
-  <div class="swiper">
-    <div class="swiper-wrapper">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="./assets/images/bryllupsportrætter/brudepar-6-i-skoven-bryllupsportraet.avif"
+                alt="Slide 1"
+                loading="lazy"
+              />
+            </div>
 
-      <div class="swiper-slide">
-        <img src="./assets/images/bryllupsportrætter/brudepar-6-i-skoven-bryllupsportraet.avif" alt="Slide 1" loading="lazy">
-      </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/images/vielse/brudepar-5-i-kirken.avif"
+                alt="Slide 2"
+                loading="lazy"
+              />
+            </div>
 
-      <div class="swiper-slide">
-        <img src="./assets/images/vielse/brudepar-5-i-kirken.avif" alt="Slide 2" loading="lazy">
-      </div>
+            <div class="swiper-slide">
+              <img
+                src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg"
+                alt="Slide 3"
+                loading="lazy"
+              />
+            </div>
+          </div>
 
-      <div class="swiper-slide">
-        <img src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg" alt="Slide 3" loading="lazy">
-      </div>
-
-    </div>
-
-       <button class="prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="prev"><i class="fas fa-chevron-left"></i></button>
           <button class="next"><i class="fas fa-chevron-right"></i></button>
-  </div>
-</section>
+        </div>
+      </section>
 
       <section class="moedeSektion">
         <p>Intesserede i et møde?</p>
         <a href="kontakt.html">Start rejsen</a>
-         <!-- Lampe med lys, lavet af Gruppe 7, på MMD3 -->
-        <img src="./assets/images/dekoration/kamera-lys-stativ-med-lys.png" alt="Kamera der lyser på knap">
+        <!-- Lampe med lys, lavet af Gruppe 7, på MMD3 -->
+        <img
+          src="./assets/images/dekoration/kamera-lys-stativ-med-lys.png"
+          alt="Kamera der lyser på knap"
+        />
       </section>
     </main>
 
@@ -215,90 +233,3 @@ Min glæde for fotografi og mit engagement i at levere billeder af høj kvalitet
     </footer>
   </body>
 </html>
-
-
-<style>
- /* Karrusel */
-
-.carousel-section {
-  padding: 50px 0;
-  --swiper-theme-color: #000;
-}
-
-.swiper {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-}
-
-/* Slides */
-.swiper-slide {
-  overflow: hidden;
-  transition: opacity 0.3s, transform 0.3s;
-  opacity: 0.5;
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 35vw;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
-
-.swiper-slide:nth-child(1) img,
-.swiper-slide:nth-child(3) img {
-  object-position: center 20%;
-}
-
-.swiper-slide-active {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.swiper-slide-prev,
-.swiper-slide-next {
-  opacity: 0.8;
-}
-
-.swiper .prev,
-.swiper .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 10;
-  padding: 0.5rem 1rem;
-}
-
-.swiper .prev {
-  left: 10px;
-}
-
-.swiper .next {
-  right: 10px;
-}
-
-.swiper .prev:focus,
-.swiper .next:focus {
-  outline: none;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  display: none !important;
-}
-
-.swiper-button-disabled {
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-</style>
