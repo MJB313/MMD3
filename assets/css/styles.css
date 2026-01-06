@@ -103,6 +103,10 @@
   padding: 0;
 }
 
+html{
+      scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3 {
@@ -120,6 +124,8 @@ span {
   font-family: "Assistant", sans-serif;
   line-height: 150%;
 }
+
+
 
 h1 {
   font-size: var(--desktopH1);
@@ -1036,6 +1042,23 @@ body .modal-next {
 
 .prisSection{
 padding-top: var(--mobileSectionSpacer);
+}
+
+body .back-to-top {
+  padding: 0.8rem 1.4rem;
+  right: 5%;
+  bottom: 2%;
+  gap: 0.3rem;
+  font-size: var(--mobileBroedtekst);
+}
+
+body .back-to-top i {
+  font-size: var(--mobileBroedtekst);
+}
+
+
+body .swiper-slide img{
+  height: 300px;
 }
 
 }
@@ -2061,3 +2084,41 @@ textarea::placeholder {
   font-size: var(--desktopBroedtekst);
 }
 
+
+/* To top */
+
+.back-to-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: var(--desktopBroedtekst);
+    color: var(--hvid);
+    padding: 1rem 2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 2rem;
+    position: fixed;
+    right: 10%;
+    bottom: 20%;
+    background-color: var(--groen);
+    box-shadow: var(--cardShadow);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.back-to-top i {
+    font-size: var(--desktopBroedtekst);
+}
+ 
+.back-to-top:hover {
+    transform: scale(1.1);
+}

@@ -87,6 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     normalNavLastScrollY = current;
   });
 
+  /* ================= To top ================= */
+const toTop = document.querySelector(".back-to-top");
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 800) {
+    toTop.classList.add("visible");
+  } else {
+    toTop.classList.remove("visible");
+  }
+});
+
   /* ================= SLIDER ================= */
   const reviews = document.querySelectorAll(".review");
   const prevBtn = document.querySelector(".prev");
