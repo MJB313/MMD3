@@ -384,6 +384,10 @@ color: var(--sort);
   padding: var(--desktopSectionSpacer) var(--gutterGapMobile) 0 var(--gutterGapMobile);
 }
 
+.z-layout:nth-child(2){
+  padding-top: 0;
+}
+
 
 
 .z-layout div {
@@ -1004,6 +1008,10 @@ body .modal-next {
   cursor: pointer;
   padding: 0.2rem 0.4rem;
   z-index: 10;
+}
+
+.prisSection{
+padding-top: var(--mobileSectionSpacer);
 }
 
 }
@@ -1720,9 +1728,10 @@ main .accordion-content p {
 
 .prisWrapper{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 390px), 1fr));
     gap: var(--gutterGap);
     max-width: 100%;
+    width: 100%;
 }
 
 .prisWrapper article {
@@ -1795,9 +1804,11 @@ background:
 
 @media screen and (max-width: 650px) {
 
-  body .prisWrapper {
+  .prisWrapper {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
+
 
   .prisWrapper article {
     height: auto;
