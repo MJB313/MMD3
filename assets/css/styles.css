@@ -138,6 +138,10 @@ h2 {
   color: var(--hvid);
 }
 
+body .sortH2{
+  color: var(--sort);
+}
+
 .centreretH2{
   text-align: center;
 }
@@ -348,7 +352,7 @@ color: var(--sort);
 
 .containerHeroImage a,
 .cardWrapper article .cardButton,
-.moedeSektion a {
+.moedeSektion a, #submit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -418,6 +422,12 @@ color: var(--sort);
   font-size: 2.5rem;
   padding-top: 2rem;
   font-weight: 500;
+}
+
+.z-layout div .sortH2 {
+  color: var(--sort);
+  text-align: left;
+
 }
 
 .sdrac {
@@ -902,6 +912,20 @@ body .generalInformation {
 body .generalInformation li {
   font-size: var(--mobileBroedtekst);
 }
+
+body .mailOgTelefonFelt {
+  display: grid;
+  gap: 0;
+}
+
+.z-layout .form-container {
+  height: auto;
+}
+
+#submit {
+  width: 100%;
+}
+ 
 
 }
 
@@ -1961,5 +1985,79 @@ margin: 0 auto;
 .modal-prev:focus,
 .modal-next:focus {
   outline: none;
+}
+
+
+
+
+
+
+/* Kontakt */
+ 
+.form-container {
+  flex: 1;
+}
+
+.form-container .sortH2{
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.z-layout .form-container div {
+  height: auto;
+}
+ 
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+ 
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+ 
+input,
+textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #849b7c;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+ 
+textarea {
+  height: 385px;
+  line-height: 1.4;
+  resize: vertical;
+}
+ 
+textarea::placeholder {
+  line-height: 1.4;
+}
+
+#besked{
+  height: 150px;
+  margin-bottom: var(--mobileBroedtekstBilledeOverskriftSpacer);
+}
+ 
+.mailOgTelefonFelt {
+  display: flex;
+  gap: 1rem;
+}
+ 
+.felt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.mailOgTelefonFelt input {
+  margin-bottom: 0;
+}
+ 
+.form-container label{
+  font-size: var(--desktopBroedtekst);
 }
 

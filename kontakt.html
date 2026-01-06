@@ -17,7 +17,7 @@
     <meta name="description" content="" />
   </head>
   <body>
- <header class="normalHeader">
+    <header class="normalHeader">
       <nav class="globalNavigation">
         <!-- Logo (left) -->
         <a href="index.html" class="navLogo">
@@ -34,9 +34,13 @@
             <li class="galleri">
               <a href="galleri.html">Galleri <span>▼</span></a>
               <ul class="dropdown">
-                <li><a href="bryllupsforberedelse.html">Bryllupsforberedelse</a></li>
+                <li>
+                  <a href="bryllupsforberedelse.html">Bryllupsforberedelse</a>
+                </li>
                 <li><a href="vielse.html">Vielse</a></li>
-                <li><a href="bryllupsportraetter.html">Bryllupsportrætter</a></li>
+                <li>
+                  <a href="bryllupsportraetter.html">Bryllupsportrætter</a>
+                </li>
                 <li><a href="bryllupsfest.html">Bryllupsfest</a></li>
               </ul>
             </li>
@@ -61,7 +65,71 @@
     </header>
 
     <main>
-     
+      <section class="z-layout z-layoutForside">
+        <article>
+          <h1>Jeres rejse starter her</h1>
+          <p>
+            Udfyld formularen, så vi kan tage hul på planlægningen og sikre at
+            vi sammen kan vi skabe billeder, der bringer minderne til live.
+          </p>
+        </article>
+
+        <img
+          src="./assets/images/dan-mortensen-bryllupsfotograf-i-nordjylland.avif"
+          alt="Billede af Dan Mortensen - bryllupsfotograf"
+          class="objectPositioning"
+        />
+      </section>
+
+
+
+
+
+      <section class="z-layout z-layoutForside">
+        <img
+          src="./assets/images/bryllupsforberedelse/brud-goer-sig-klar-foran-spejl.jpg"
+          alt="Brud det klargører sig foran et spejl"
+          class="objectPositioning"
+        />
+
+        <div class="form-container">
+          <h2 class="sortH2">Start jeres rejse her</h2>
+          <form>
+            <label for="navn">Navn:</label>
+            <input
+              type="text"
+              placeholder="Indtast venligst dit navn..."
+              id="navn"
+            />
+
+            <div class="mailOgTelefonFelt">
+              <div class="felt">
+                <label for="email">E-mail:</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Eksempel@gmail.com"
+                />
+              </div>
+
+              <div class="felt">
+                <label for="tlfNummer">Telefon:</label>
+                <input type="tel" id="tlfNummer" placeholder="+45" />
+              </div>
+            </div>
+
+            <label for="besked">Besked:</label>
+            <textarea
+              id="besked"
+              placeholder="Skriv venligst her...."
+            ></textarea>
+
+            <input type="submit" value="Start rejsen" id="submit">
+          </form>
+        </div>
+      </section>
+
+
     </main>
 
     <footer class="site-footer">
@@ -77,7 +145,11 @@
         </div>
 
         <div class="footer-logo">
-          <a href="index.html"><img src="./assets/images/dan-mortensen-logo-sort.png" alt="Dan Mortensens logo" /></a>
+          <a href="index.html"
+            ><img
+              src="./assets/images/dan-mortensen-logo-sort.png"
+              alt="Dan Mortensens logo"
+          /></a>
         </div>
 
         <div class="footer-item">
