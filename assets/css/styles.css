@@ -728,7 +728,7 @@ Media querries
 
 @media (min-width: 1000px) {
 
-  .globalNavigation li:hover > ul.dropdown {
+  .globalNavigation li:hover > ul.dropdown, .forsideGlobalNavigation li:hover > ul.dropdown {
     display: flex;
   }
 
