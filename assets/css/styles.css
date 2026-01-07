@@ -180,6 +180,7 @@ img {
   color: var(--sort);
   font-family: "delaney", sans-serif;
   font-size: var(--desktopNav);
+  font-weight: 600;
 }
 
 .globalNavigation.hide, .forsideGlobalNavigation.hide {
