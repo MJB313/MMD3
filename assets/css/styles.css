@@ -415,7 +415,7 @@ color: var(--sort);
 }
 .forsideBog{
   /* Billede genereret med AI INDSÆT PROMT*/
-  background-image: url("../images/bryllupsportrætter/Bog-med-ringe.jpg");
+  background-image: url("../images/bog-med-ringe.jpg");
   background-size: cover;
   background-position: center;
 }
