@@ -88,6 +88,7 @@
       <section class="galleriSection">
         <h2>Galleri af bryllupsforberedelse</h2>
         <div class="imageWrapper">
+          <!-- Opretter en class som vi bruger til at finde alle de billede elementer vi skal fange i vores js til at få skabt et modal til hvert billede i vores gallerier -->
           <picture class="galleri_billede_active">
             <source
               media="(max-width: 650px)"
@@ -250,6 +251,8 @@
       <a href="#top" class="back-to-top">
         <!-- Pil der peger op: https://fontawesome.com/icons/arrow-up?s=solid -->
         <i class="fa-solid fa-arrow-up"></i> Top</a>
+
+        <!-- Selve omsætningen af vores modal når man klikker ind på et billede, styles i vores css under galleri_billede_modal og modal_box. Inden i modalet har vi et kryds for at lukke dem ned og en pil til venstre og højre for billedet som vi skal bruge til at skifte frem og tilbage mellem hvert modal.  -->
 
       <div class="galleri_billede_modal" id="globalModal">
         <div class="modal_box">

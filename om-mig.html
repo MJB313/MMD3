@@ -12,23 +12,34 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Her henter vi vores bibliotek for swiper sektionen på vores side, den ender på css, så her vil bruges blandt andet til styling af selve karusselen. */
+ -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" 
     />
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <script src="./assets/js/app.js" defer></script>
+    <!-- Her henter vi endnu et bibliotek for swiper sektionen på vores side, den ender på js, dette bibliotek bruges til selve funktionen af karusselen -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+      // Opretter en ny Swiper-instans
         new Swiper(".swiper", {
+          // Hvilken animation/effekt Swiper bruger
           effect: "coverflow",
+          // Viser en "gribehånd"-cursor når man hover slideren
           grabCursor: true,
+          // Det aktive slide placeres i midten
           centeredSlides: true,
+          // Antal slides der vises ad gangen
           slidesPerView: 1,
+          // Afstand mellem slides (i px)
           spaceBetween: 0,
+          // Hvilket slide der vises først (0 = første slide)
           initialSlide: 1,
 
+          // Indstillinger specifikt til coverflow-effekten
           coverflowEffect: {
             rotate: 0,
             stretch: 0,
@@ -37,12 +48,14 @@
             slideShadows: false,
           },
 
+          // Denne del bruges til at skifte mellem hvert billede i karousellen, swiper-button-disabled, bruges når man ikke kan til længere til en side, så knappen til den vil forsvinde indtil man gå tilbage.
           navigation: {
             nextEl: ".next",
             prevEl: ".prev",
             disabledClass: "swiper-button-disabled",
           },
 
+          // breakpoints skal fungerer ligesom media queries, bare Swiper's version. Så snart den kommer under 1000px width vil gå over til at være 1 billede kolonne.
           breakpoints: {
             1000: {
               slidesPerView: 3,
@@ -156,6 +169,7 @@
         </article>
       </section>
 
+      <!-- Efter vi får hentet vores karusel bibliotek ned får vi opsat en sektion med swiper class der styles i css, og 3 billeder. Til sidst 2 knapper/pile vi har genbrugt i vores anmeldelsessektion på forsiden. -->
       <section class="carousel-section">
         <div class="swiper">
           <div class="swiper-wrapper">

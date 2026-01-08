@@ -210,13 +210,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= GALLERY MODALS ================= */
+  /* ================= MODALER TIL GALLERIER ================= */
+
+  // Finder alle galleri-billeder, der kan klikkes på
   const pictures = Array.from(
     document.querySelectorAll(".galleri_billede_active")
   );
+  // Finder modal-containeren
   const modal = document.getElementById("globalModal");
+  // Finder <img>-elementet inde i modalen
   const modalImage = document.getElementById("modalImage");
+  // Finder luk-knappen
   const closeBtn = modal?.querySelector(".buttonClose");
+  // Finder navigations-pile
   const leftArrow = modal?.querySelector(".modal-prev");
   const rightArrow = modal?.querySelector(".modal-next");
 
@@ -230,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) {
     let currentIndex = 0;
 
-    // Open modal
+    // Står for at åbne modalet. I starten lytter man efter et "click" på et billede i modalet, og tilbage class "active" som skal vise modalen på siden.
     pictures.forEach((pic, index) => {
       pic.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -241,35 +247,36 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Close modal function
+    // Lukker modalet ved at fjerne 'active'-klassen
     function closeModal() {
       modal.classList.remove("active");
     }
 
-    // Navigate to previous image
+    // Funktionen skal henvise til forrige billede (-1) end billedet man er på (currentIndex), ved klik på pilen til venstre for billedet 
     function showPrevImage() {
       currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
       modalImage.src = pictures[currentIndex].querySelector("img").src;
     }
 
-    // Navigate to next image
+    // På samme måde venstre pil fungere, bare og den skal vise det næste billede og ikke det forrige hvilket er derfor "currentIndex = (currentIndex + 1) % pictures.length" har et "+" istedet for et "-".
     function showNextImage() {
       currentIndex = (currentIndex + 1) % pictures.length;
       modalImage.src = pictures[currentIndex].querySelector("img").src;
     }
 
-    // Close modal
+    // Lytter efter 1 klik på krydset i modalet og lukker det ned.
     closeBtn.addEventListener("click", closeModal);
 
-    // Click outside modal box closes it
+    // Når man klikker ude fra modalet vil "class= active" forsvinde og dermed vil modalen på siden lukkes ned.
     modal.addEventListener("click", (e) => {
       if (!e.target.closest(".modal_box")) {
         closeModal();
       }
     });
 
-    // Navigation arrows
+    // Navigation pile
     leftArrow.addEventListener("click", (e) => {
+      // Forhindrer at klik lukker modalen
       e.stopPropagation();
       showPrevImage();
     });
