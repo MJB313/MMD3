@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ================= BURGER MENU ================= */
+  // fanger elementerne
   const burgerBtn = document.querySelector(".burger-btn");
   const navLinks = document.querySelector(".navLinks");
 
+  // siger, hvis man trykker på navlinks og burger button, at der laves en eventlistener, som toggler classen show.
   if (burgerBtn && navLinks) {
     burgerBtn.addEventListener("click", () => {
       navLinks.classList.toggle("show");
@@ -12,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= DROPDOWN NAV ================= */
   const dropdownItems = document.querySelectorAll(".galleri");
 
+  // Laver for each loop for dropdown
   dropdownItems.forEach((item) => {
     const dropdown = item.querySelector(".dropdown");
     if (!dropdown) return;
@@ -41,9 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ================= Nav highligt ================= */
-    const currentPage = window.location.pathname.split("/").pop(); // fx "priser.html"
+    // Finder den side vi er på ved brug af window location og pop. 
+    const currentPage = window.location.pathname.split("/").pop(); // eksempel på side den fanger "priser.html"
     const navLinksAll = document.querySelectorAll(".globalNavigation a");
 
+    // For each loop, der sørger for at det virker på alle links
     navLinksAll.forEach((link) => {
       const linkPage = link.getAttribute("href");
       if (linkPage === currentPage) {
@@ -58,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close mobile dropdowns when resizing to desktop
+  // Lukker den mobile dropdown, når man er i desktop 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1000) {
       dropdownItems.forEach((item) => {
@@ -69,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= NAVIGATION SCROLL BEHAVIOR ================= */
+  // Samme som næste navigation scroll, fokuseret på forsiden.
   const nav = document.querySelector(".forsideGlobalNavigation");
 
   if (nav) {
@@ -98,8 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= ANDEN NAVIGATION SCROLL ================= */
+  // Fanger navigationen
   const normalNav = document.querySelector(".globalNavigation");
 
+  // Laver en if / else statement, som lytter på scroll. Efter 100 forsvinder den og får classen "scrolled"
   if (normalNav) {
     let normalNavLastScrollY = window.scrollY;
 
@@ -127,8 +135,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= To top ================= */
+
+  // Fanger div'en, som har font awesome ikon og tekst i sig. 
   const toTop = document.querySelector(".back-to-top");
 
+  // If / else statement, der laver en eventlistener som lytter på at vi scroller. Efter 800 px på Y aksen, tilføjer vi classen "Visible", som gør knappen synlig. 
   if (toTop) {
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
@@ -140,75 +151,84 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= SLIDER ================= */
-  const reviews = document.querySelectorAll(".review");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
+/* ================= SLIDER ================= */
 
-  if (reviews.length && prevBtn && nextBtn) {
-    let current = 0;
-    let animating = false;
+// Hent alle elementer med klassen "review", samt knapperne til forrige og næste
+const reviews = document.querySelectorAll(".review");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
 
-    // Initialiser alle reviews
-    reviews.forEach((review, i) => {
-      review.style.transition = "transform 0.5s ease-in-out";
-      if (i === current) {
-        review.style.transform = "translateX(0)";
-        review.style.zIndex = "2";
-        review.classList.add("active");
-      } else {
-        review.style.transform = "translateX(100%)";
-        review.style.zIndex = "1";
-        review.classList.remove("active");
-      }
-    });
+// Tjek at vi har reviews og begge knapper før vi fortsætter
+if (reviews.length && prevBtn && nextBtn) {
+  let current = 0;          // Index for den aktuelle review
+  let animating = false;    // Flag for at forhindre klik under animation
 
-    prevBtn.style.display = "none";
-
-    function updateArrows() {
-      prevBtn.style.display = current === 0 ? "none" : "block";
-      nextBtn.style.display = current === reviews.length - 1 ? "none" : "block";
+  // Initialiser alle reviews
+  reviews.forEach((review, i) => {
+    review.style.transition = "transform 0.5s ease-in-out"; // Animation for slide-effekt
+    if (i === current) {
+      review.style.transform = "translateX(0)"; // Den aktive review vises
+      review.style.zIndex = "2";                // Aktiv review over andre
+      review.classList.add("active");           // Marker som aktiv
+    } else {
+      review.style.transform = "translateX(100%)"; // Skub resten ud af skærmen til højre
+      review.style.zIndex = "1";                   // Baggrundsplacering
+      review.classList.remove("active");           // Fjern aktiv status
     }
+  });
 
-    function showReview(newIndex, direction) {
-      if (animating || newIndex === current) return;
-      animating = true;
+  // Skjul "forrige" knappen initialt, da vi er på første review
+  prevBtn.style.display = "none";
 
-      const currentReview = reviews[current];
-      const nextReview = reviews[newIndex];
-
-      // Forbered næste review
-      nextReview.style.zIndex = "3";
-      nextReview.style.transform =
-        direction === "right" ? "translateX(100%)" : "translateX(-100%)";
-
-      // Start animation
-      requestAnimationFrame(() => {
-        currentReview.style.transform =
-          direction === "right" ? "translateX(-100%)" : "translateX(100%)";
-        nextReview.style.transform = "translateX(0)";
-      });
-
-      // Efter animation er færdig
-      setTimeout(() => {
-        currentReview.style.zIndex = "1";
-        currentReview.classList.remove("active");
-        nextReview.style.zIndex = "2";
-        nextReview.classList.add("active");
-        current = newIndex;
-        animating = false;
-        updateArrows();
-      }, 500);
-    }
-
-    nextBtn.addEventListener("click", () => {
-      if (current < reviews.length - 1) showReview(current + 1, "right");
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (current > 0) showReview(current - 1, "left");
-    });
+  // Funktion til at opdatere visningen af pilene
+  function updateArrows() {
+    prevBtn.style.display = current === 0 ? "none" : "block";               // Skjul hvis første
+    nextBtn.style.display = current === reviews.length - 1 ? "none" : "block"; // Skjul hvis sidste
   }
+
+  // Funktion til at vise en ny review med animation
+  function showReview(newIndex, direction) {
+    if (animating || newIndex === current) return; // Afvis klik under animation eller klik på samme
+    animating = true;
+
+    const currentReview = reviews[current]; // Gem den nuværende review
+    const nextReview = reviews[newIndex];   // Gem den næste review
+
+    // Forbered næste review før animation
+    nextReview.style.zIndex = "3"; // Sørg for den vises ovenpå den nuværende
+    nextReview.style.transform =
+      direction === "right" ? "translateX(100%)" : "translateX(-100%)"; // Start udenfor skærmen
+
+    // Start animation på næste frame
+    requestAnimationFrame(() => {
+      currentReview.style.transform =
+        direction === "right" ? "translateX(-100%)" : "translateX(100%)"; // Flyt nuværende ud af skærmen
+      nextReview.style.transform = "translateX(0)"; // Flyt næste ind i skærmen
+    });
+
+    // Når animationen er færdig (500ms)
+    setTimeout(() => {
+      currentReview.style.zIndex = "1";            // Send den gamle review bagud
+      currentReview.classList.remove("active");    // Fjern aktiv status
+      nextReview.style.zIndex = "2";               // Aktiv review foran
+      nextReview.classList.add("active");          // Marker som aktiv
+      current = newIndex;                          // Opdater current index
+      animating = false;                            // Animation færdig, klik kan nu registreres
+      updateArrows();                              // Opdater pilenes synlighed
+    }, 500);
+  }
+
+  // Event listener for "næste" knap
+  nextBtn.addEventListener("click", () => {
+    if (current < reviews.length - 1) showReview(current + 1, "right");
+  });
+
+  // Event listener for "forrige" knap
+  prevBtn.addEventListener("click", () => {
+    if (current > 0) showReview(current - 1, "left");
+  });
+}
+
 
   /* ================= MODALER TIL GALLERIER ================= */
 
